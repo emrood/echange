@@ -1,0 +1,28 @@
+.theme-color li.active a{
+    color: #ae5af3;
+}
+.theme-color li a{
+    text-decoration: none;
+    color: #999;
+    font-weight:500;
+}
+
+@media screen and (max-width: 768px) {
+   .dataTables_wrapper.container-fluid.dt-bootstrap4.no-footer .col-sm-12.col-md-5,  .dataTables_wrapper.container-fluid.dt-bootstrap4.no-footer .col-sm-12.col-md-6{
+       padding-right: 0px;
+
+   }
+    .dataTables_wrapper.container-fluid.dt-bootstrap4.no-footer .col-sm-12.col-md-7,
+    .dataTables_wrapper.container-fluid.dt-bootstrap4.no-footer .col-sm-12.col-md-6{
+        padding-left: 0px;
+    }
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+        margin: 2px 0;
+        white-space: nowrap;
+        justify-content: center!important;
+    }
+
+    .white-box.card .d-block.text-center .btn.btn-success{
+        margin-bottom: 8px;
+    }
+}
