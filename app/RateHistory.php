@@ -31,11 +31,12 @@ class RateHistory extends Model
 
     public function user()
     {
-        return $this->BelongsTo('App\User');
+        return $this->belongsTo(User::class, 'user_id', 'id')->first();
     }
     public function currency()
     {
-        return $this->BelongsTo('App\Currency');
+
+        return $this->belongsTo(Currency::class,'currency_id', 'id')->first();
     }
     
 

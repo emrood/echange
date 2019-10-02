@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Deleted Users | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Utilisateurs supprimés| '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Deleted Users'])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Utilisateurs supprimés'])
 @endsection
 
 @push('after-css')
@@ -25,7 +25,7 @@
                                         <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Name</th>
+                                            <th>Nom</th>
                                             <th>Role</th>
                                             <th>Actions</th>
                                         </tr>

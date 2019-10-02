@@ -1,3 +1,3 @@
 <footer class="footer text-center">
-    All Rights Reserved by <a href="https://jthemes.com" target="_blank">Jthemes Studio</a>.
+    Powered by <a href="mailto:gotechhaiti@gmail.com" target="_blank">Go-Tech</a>.
 </footer>

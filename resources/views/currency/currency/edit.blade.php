@@ -1,17 +1,21 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Edit Currency | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Edition de devise | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Edit Currency #'.$currency->id ])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Edition de devise #'.$currency->id ])
 @endsection
 
 @push('before-css')
 
 @endpush
+@php
+    setlocale(LC_ALL,"fr_FR");
+    setlocale(LC_TIME, "fr_FR");
+@endphp
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-5 center-block" style="margin-left: auto; margin-right: auto">
                 <div class="card">
                     <div class="card-body">
                         @if ($errors->any())
@@ -24,7 +28,7 @@
 
                         {!! Form::model($currency, [
                             'method' => 'PATCH',
-                            'url' => ['/currency/currency', $currency->id],
+                            'url' => ['/currency', $currency->id],
                             'class' => 'form-horizontal',
                             'files' => true
                         ]) !!}
@@ -33,6 +37,9 @@
 
                         {!! Form::close() !!}
 
+                    </div>
+                    <div class="card-footer">
+                        <span>Ce taux sera appliqué pour le {{  strftime("%e %B %Y", strtotime(\Carbon\Carbon::today()->toDateString()))   }}</span>
                     </div>
                 </div>
             </div>

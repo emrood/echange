@@ -21,8 +21,7 @@
                             <div class="col-12 ">
                                 <div class="d-block text-center ">
                                     <a class="btn btn-success" href="{{url('role/create')}}"><i class="icon-plus"></i>
-                                        Add
-                                        Role</a>
+                                        Ajouter un role</a>
                                 </div>
 
                                 <div class="table-responsive">

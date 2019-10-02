@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Currency | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Devises | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Currency'])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Devises'])
 @endsection
 
 @push('before-css')
@@ -16,8 +16,8 @@
                    <div class="card">
                     <div class="card-body">
                        <div class="d-block text-center">
-                        <a href="{{ url('/currency/currency/create') }}" class="btn btn-success btn-sm" title="Add New Currency">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <a href="{{ url('/currency/create') }}" class="btn btn-success btn-sm" title="Add New Currency">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un nouveau
                         </a>
                         </div>
 
@@ -26,7 +26,12 @@
                             <table class="table table-bordered" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th>No</th><th>Test</th><th>Actions</th>
+                                        <th>No</th>
+                                        <th>Abbreviation</th>
+                                        <th>Taux de vente</th>
+                                        <th>Taux d'achat</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,7 +70,7 @@
                 return false;
             }
         });
-        var route = '{{asset('currency/currency/get-data')}}';
+        var route = '{{asset('currency/get-data')}}';
 
         $('#myTable').DataTable({
             processing: true,
@@ -73,16 +78,24 @@
             iDisplayLength: 10,
             retrieve: true,
             ajax: route,
+            {{--columns: [--}}
+                {{--{data: "DT_RowIndex", name: 'DT_RowIndex',width:'5%'},--}}
+                    {{--@foreach($columns as $column)--}}
+                {{--{--}}
+                    {{--data: "{{$column}}", name: '{{$column}}'--}}
+                {{--},--}}
+                    {{--@endforeach--}}
+                {{--{--}}
+                    {{--data: "actions", name: "actions"--}}
+                {{--}--}}
+            {{--],--}}
             columns: [
-                {data: "DT_RowIndex", name: 'DT_RowIndex',width:'5%'},
-                    @foreach($columns as $column)
-                {
-                    data: "{{$column}}", name: '{{$column}}'
-                },
-                    @endforeach
-                {
-                    data: "actions", name: "actions"
-                }
+                {data: 'id', name: 'id'},
+                {data: 'Abbreviation', name: 'abbreviation'},
+                {data: 'sale_rate', name: 'sale_rate'},
+                {data: 'purchase_rate', name: 'purchase_rate'},
+                {data: 'date', name: 'date'},
+                {data: 'actions', name: 'actions'}
             ],
 
         });

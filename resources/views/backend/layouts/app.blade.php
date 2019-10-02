@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
-    <title>@yield('title','Mendy Admin Template')</title>
+    <title>@yield('title','E-change')</title>
 
 @stack('before-css')
 
@@ -101,7 +101,7 @@
     <!-- ============================================================== -->
     <!-- customizer Panel -->
     <!-- ============================================================== -->
-    @include('backend.layouts.partials.customiser-panel')
+    {{--@include('backend.layouts.partials.customiser-panel')--}}
 @endif
 <!-- ============================================================== -->
 <!-- All Jquery -->
@@ -113,22 +113,19 @@
 <!-- apps -->
 <script src="{{asset('dist/js/app.min.js')}}"></script>
 
-@if(session()->get('theme-layout') == 'fix-header')
+{{--@if(session()->get('theme-layout') == 'fix-header')--}}
+    {{--<script src="{{asset('dist/js/app.init.horizontal.js')}}"></script>--}}
+    {{--<script src="{{asset('dist/js/app.init.mini-sidebar.js')}}"></script>--}}
+    {{--<!---=========== Use Above JS for Horizontal Layout ==========--->--}}
+{{--@elseif(session()->get('theme-layout') == 'mini-sidebar')--}}
 
-    <script src="{{asset('dist/js/app.init.horizontal.js')}}"></script>
-   <!---=========== Use Above JS for Horizontal Layout ==========--->
-
-@elseif(session()->get('theme-layout') == 'mini-sidebar')
-
-    <script src="{{asset('dist/js/app.init.mini-sidebar.js')}}"></script>
-    <!---========= Use Above JS for Mini Sidebar Layout =========--->
-
-@else
-
-    <script src="{{asset('dist/js/app.init.js')}}"></script>
-    <!---========= Use Above JS Default Layout ==========--->
-
-@endif
+    {{--<script src="{{asset('dist/js/app.init.mini-sidebar.js')}}"></script>--}}
+    {{--<!---========= Use Above JS for Mini Sidebar Layout =========--->--}}
+{{--@else--}}
+    {{--<script src="{{asset('dist/js/app.init.js')}}"></script>--}}
+    {{--<!---========= Use Above JS Default Layout ==========--->--}}
+{{--@endif--}}
+<script src="{{asset('dist/js/app.init.js')}}"></script>
 
 <script src="{{asset('dist/js/app-style-switcher.js')}}"></script>
 <!-- slims-crollbar scrollbar JavaScript -->

@@ -66,6 +66,7 @@ class UsersController extends Controller
 
 
     public function save(Request $request){
+
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required',
@@ -82,13 +83,17 @@ class UsersController extends Controller
             'role' => 'required',
 
         ],[
-            'pic_file.required' => 'Profile picture required',
-            'dob.required' => 'Date of Birth required'
+            'pic_file.required' => 'Photo de profil requise',
+            'dob.required' => 'Date de naissance requise',
+            'name.required' => 'Le nom est obligatoire',
+            'email.required' => 'L\'adresse email est obligatoire',
+            'password.required' => 'Le mot de passe est obligatoire',
         ]);
 //        $user->assignRole($role->name);
 
         $user =  User::firstOrCreate(['name'=>$request->name,'email'=> $request->email]);
         $user->status = 1;
+
         $user->password = bcrypt($request->password);
         $user->save();
 
@@ -119,13 +124,14 @@ class UsersController extends Controller
         $profile->city = $request->city;
         $profile->address = $request->address;
         $profile->postal = $request->postal;
+        $profile->phone = $request->phone;
         $profile->pic = $request['pic'];
         $profile->save();
 
         $role = Role::find($request->role);
         $user->assignRole($role->name);
 
-        Session::flash('message','User has been added');
+        Session::flash('message','Utilisateur enregistré !');
         return redirect()->back();
     }
 
@@ -196,6 +202,7 @@ class UsersController extends Controller
         $profile->state = $request->state;
         $profile->city = $request->city;
         $profile->address = $request->address;
+        $profile->phone = $request->phone;
         $profile->postal = $request->postal;
         $profile->save();
 
@@ -207,21 +214,21 @@ class UsersController extends Controller
             $user->assignRole($role->name);
         }
 
-        Session::flash('message','User has been updated');
+        Session::flash('message','L\'utilisateur a été mis à jour');
         return redirect()->back();
     }
 
     public function delete($id){
        $user =  User::findOrfail($id);
        $user->delete();
-       Session::flash('message','User has been deleted');
+       Session::flash('message','L\'utilisateur a été supprimé');
        return back();
     }
 
     public function destroy($id){
         $user =  User::onlyTrashed()->where('id','=',$id)->first();
         $user->forceDelete();
-        Session::flash('message','User has been deleted permanently');
+        Session::flash('message','L\'utilisateur a été supprimé définitivement');
         return back();
     }
 
@@ -233,7 +240,7 @@ class UsersController extends Controller
     public function restoreUser(Request $request){
         $user =  User::onlyTrashed()->where('id','=',$request->id);
         $user->restore();
-        Session::flash('message','User has been restored');
+        Session::flash('message',"L'utilisateur a été restauré");
         return back();
     }
 
@@ -289,11 +296,12 @@ class UsersController extends Controller
         $profile->country = $request->country;
         $profile->state = $request->state;
         $profile->city = $request->city;
+        $profile->phone = $request->phone;
         $profile->address = $request->address;
         $profile->postal = $request->postal;
         $profile->save();
 
-        Session::flash('message','Account has been updated');
+        Session::flash('message','Compte mis à jour !');
         return redirect()->back();
     }
 

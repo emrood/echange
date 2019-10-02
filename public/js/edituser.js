@@ -14,7 +14,7 @@ $("#commentForm").bootstrapValidator({
         name: {
             validators: {
                 notEmpty: {
-                    message: 'The name is required'
+                    message: 'Le nom est obligatoire'
                 }
             },
             required: true,
@@ -24,7 +24,7 @@ $("#commentForm").bootstrapValidator({
             validators: {
                 different: {
                     field: 'first_name,last_name',
-                    message: 'Password should not match first or last name'
+                    message: 'Le mot de passe est obligatoire'
                 }
             }
         },
@@ -35,31 +35,31 @@ $("#commentForm").bootstrapValidator({
                 },
                 different: {
                     field: 'first_name,last_name',
-                    message: 'Confirm Password should match with password'
+                    message: 'Le mot de passe doit etre confirmer'
                 }
             }
         },
         email: {
             validators: {
                 notEmpty: {
-                    message: 'The email address is required'
+                    message: 'L\'adresse email est obligatoire'
                 },
                 emailAddress: {
-                    message: 'The input is not a valid email address'
+                    message: 'L\'entrée n\'est pas une adresse email valide'
                 }
             }
         },
         activate: {
             validators: {
                 notEmpty: {
-                    message: 'Please check the checkbox to activate'
+                    message: 'Veuillez cocher la case pour activer'
                 }
             }
         },
         group: {
             validators:{
                 notEmpty:{
-                    message: 'You must select a group'
+                    message: 'Vous devez sélectionner un groupe'
                 }
             }
         }

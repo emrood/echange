@@ -6,56 +6,32 @@
             <ul id="sidebarnav">
                 @if(auth()->check() && auth()->user()->isAdmin() == true)
                     <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
+                        <a href="{{asset('index')}}" class="sidebar-link">
                             <i data-feather="home" class="mr-2"></i>
-                            <span class="hide-menu">Dashboard </span>
+                            <span class="hide-menu"> Tableau de bord </span>
                         </a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item">
-                                <a href="{{asset('index')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu">Dashboard 1 </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{asset('index2')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu">Dashboard 2 </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{asset('index3')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu">Dashboard 3 </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{asset('index4')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu"> Dashboard 4 </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{asset('index5')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu"> Dashboard 5 </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{asset('index6')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu"> Dashboard 6 </span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
+
+                    @foreach($laravelAdminMenus->menus as $section)
+                        @if(count(collect($section->items)) > 0)
+                            @foreach($section->items as $menu)
+                                @can('view-'.Str::slug($menu->title))
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="{{ url($menu->url) }}">
+                                            <i class="{{$menu->icon}} mr-2"></i>
+                                            <span class="hide-menu">{{ $menu->title }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                            @endforeach
+                        @endif
+                    @endforeach
 
 
                     <li class="sidebar-item">
                         <a href="{{asset('role-management')}}" class="sidebar-link">
                             <i data-feather="briefcase" class="mr-2"></i>
-                            <span class="hide-menu"> Role Management </span>
+                            <span class="hide-menu"> Roles </span>
                         </a>
                     </li>
 
@@ -63,61 +39,53 @@
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                            aria-expanded="false">
                             <i data-feather="users" class="mr-2"></i>
-                            <span class="hide-menu">Users</span>
+                            <span class="hide-menu">Utilisateurs</span>
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item">
                                 <a href="{{url('users')}}" class="sidebar-link">
                                     <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu"> Manage Users </span>
+                                    <span class="hide-menu"> Gérer les utilisateurs </span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{url('user/create')}}" class="sidebar-link">
                                     <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu"> Add New User</span>
+                                    <span class="hide-menu">Ajouter un nouvel utilisateur</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{url('user/deleted')}}" class="sidebar-link">
                                     <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu">Deleted Users</span>
+                                    <span class="hide-menu">Utilisateurs supprimés</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
 
-                    <li class="sidebar-item">
-                        <a href="{{url('crud-generator')}}" class="sidebar-link">
-                            <i data-feather="box" class="mr-2"></i>
-                            <span class="hide-menu">CRUD Generator </span>
-                        </a>
-                    </li>
 
-
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
-                            <i data-feather="alert-triangle" class="mr-2"></i>
-                            <span class="hide-menu">Logs</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item">
-                                <a href="{{url('log-viewer')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu"> Laravel Logs </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{url('activity-log')}}" class="sidebar-link">
-                                    <i data-feather="droplet" class="mr-2"></i>
-                                    <span class="hide-menu"> Activity Logs </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    {{--<li class="sidebar-item">--}}
+                        {{--<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"--}}
+                           {{--aria-expanded="false">--}}
+                            {{--<i data-feather="alert-triangle" class="mr-2"></i>--}}
+                            {{--<span class="hide-menu">Logs</span>--}}
+                        {{--</a>--}}
+                        {{--<ul aria-expanded="false" class="collapse  first-level">--}}
+                            {{--<li class="sidebar-item">--}}
+                                {{--<a href="{{url('log-viewer')}}" class="sidebar-link">--}}
+                                    {{--<i data-feather="droplet" class="mr-2"></i>--}}
+                                    {{--<span class="hide-menu"> Laravel Logs </span>--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="sidebar-item">--}}
+                                {{--<a href="{{url('activity-log')}}" class="sidebar-link">--}}
+                                    {{--<i data-feather="droplet" class="mr-2"></i>--}}
+                                    {{--<span class="hide-menu"> Activity Logs </span>--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
 
 
 
@@ -129,62 +97,18 @@
                         </a>
                     </li>
                 @endif
-                @foreach($laravelAdminMenus->menus as $section)
-                    @if(count(collect($section->items)) > 0)
-                        @foreach($section->items as $menu)
-                            @can('view-'.Str::slug($menu->title))
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="{{ url($menu->url) }}">
-                                        <i class="{{$menu->icon}} mr-2"></i>
-                                        <span class="hide-menu">{{ $menu->title }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                        @endforeach
-                    @endif
-                @endforeach
-                @can('view-blog')
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
-                            <i data-feather="book-open" class="mr-2"></i>
-                            <span class="hide-menu">Blog</span>
-                        </a>
 
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            @can('add-blog-category')
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="{{asset('blog-category')}}">
-                                        <i data-feather="droplet" class="mr-2"></i>
-                                        <span class="hide-menu">Blog Categories</span>
-                                    </a>
-                                </li>
-                            @endcan
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{url('activity-log')}}">
+                        <i data-feather="alert-triangle" class="mr-2"></i>
+                        <span class="hide-menu">Journal d'activité</span>
+                    </a>
+                </li>
 
-                            @can('view-blog')
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="{{asset('blog')}}">
-                                        <i data-feather="droplet" class="mr-2"></i>
-                                        <span class="hide-menu">Blog List</span>
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('add-blog')
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="{{asset('blog/create')}}">
-                                        <i data-feather="droplet" class="mr-2"></i>
-                                        <span class="hide-menu">Add New Blog</span>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{url('account-settings')}}">
                         <i data-feather="settings" class="mr-2"></i>
-                        <span class="hide-menu">Account Settings</span>
+                        <span class="hide-menu">Paramètres du compte</span>
                     </a>
                 </li>
                 <li>

@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'View RateHistory  | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Voir l\'historique  | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
     @include('backend.layouts.partials.breadcrumbs',['current' => 'View RateHistory #'.$ratehistory->id])
@@ -9,7 +9,10 @@
 
 @endpush
 
-
+@php
+    setlocale(LC_ALL,"fr_FR");
+    setlocale(LC_TIME, "fr_FR");
+@endphp
 @section('content')
     <div class="container-fluid">
         <!-- .row -->

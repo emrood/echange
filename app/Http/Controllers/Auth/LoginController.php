@@ -44,10 +44,14 @@ class LoginController extends Controller
         activity($user->name)
             ->performedOn($user)
             ->causedBy($user)
-            ->log('LoggedIn');
+            ->log('Connexion');
+
         if($user->isAdmin()){
             return redirect('dashboard');
+        }else{
+
         }
+
         return redirect('/');
     }
 
@@ -57,7 +61,7 @@ class LoginController extends Controller
         activity($user->name)
             ->performedOn($user)
             ->causedBy($user)
-            ->log('LoggedOut');
+            ->log('Déconnection');
         $this->guard()->logout();
         $request->session()->invalidate();
         return redirect('login');

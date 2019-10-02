@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Account Settings | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Paramètres du compte | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Account Settings'])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Paramètres du compte'])
 @endsection
 
 @push('after-css')
@@ -101,16 +101,15 @@
 
                             <div id="rootwizard">
                                 <ul class="nav nav-tabs pb-2">
-                                    <li class="nav-link "><a href="#tab1" class="active" data-toggle="tab">User
-                                            Profile</a></li>
+                                    <li class="nav-link "><a href="#tab1" class="active" data-toggle="tab">Profil Utilisateur</a></li>
                                     <li class="nav-link"><a href="#tab2" data-toggle="tab">Bio</a></li>
-                                    <li class="nav-link"><a href="#tab3" data-toggle="tab">Address</a></li>
+                                    <li class="nav-link"><a href="#tab3" data-toggle="tab">Informations personelles</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab1">
                                         {{--<h2 class="hidden">&nbsp;</h2>--}}
                                         <div class="form-group row justify-content-center   {{ $errors->first('name', 'has-error') }}">
-                                            <label for="name" class="col-12 col-lg-2 control-label">Name *</label>
+                                            <label for="name" class="col-12 col-lg-2 control-label">Nom complet *</label>
                                             <div class="col-12 col-lg-6">
                                                 <input id="name" name="name" type="text"
                                                        placeholder="Name" class="form-control required"
@@ -131,7 +130,7 @@
                                         <h6><b>If you don't want to change password... please leave them empty</b></h6>
 
                                         <div class="form-group row justify-content-center   {{ $errors->first('password', 'has-error') }}">
-                                            <label for="password" class="col-12 col-lg-2 control-label">Password
+                                            <label for="password" class="col-12 col-lg-2 control-label">Mot de passe
                                                 *</label>
                                             <div class="col-12 col-lg-6">
                                                 <input id="password" name="password" type="password"
@@ -142,7 +141,7 @@
                                         </div>
 
                                         <div class="form-group row justify-content-center   {{ $errors->first('password_confirmation', 'has-error') }}">
-                                            <label for="password_confirm" class="col-12 col-lg-2 control-label">Confirm
+                                            <label for="password_confirm" class="col-12 col-lg-2 control-label">Confirmer le mot de passe
                                                 Password
                                                 *</label>
                                             <div class="col-12 col-lg-6">
@@ -186,12 +185,12 @@
                                                          style="max-width: 200px; max-height: 200px;"></div>
                                                     <div>
                                                 <span class="btn btn-primary btn-file">
-                                                    <span class="fileinput-new">Select image</span>
-                                                    <span class="fileinput-exists">Change</span>
+                                                    <span class="fileinput-new">Sélectionnez une image</span>
+                                                    <span class="fileinput-exists">Changer</span>
                                                     <input id="pic" name="pic_file" type="file" class="form-control"/>
                                                 </span>
                                                         <a href="#" class="btn btn-danger fileinput-exists"
-                                                           data-dismiss="fileinput">Remove</a>
+                                                           data-dismiss="fileinput">Retirer</a>
                                                     </div>
                                                 </div>
                                                 <span class="help-block">{{ $errors->first('pic_file', ':message') }}</span>
@@ -199,20 +198,10 @@
                                         </div>
 
 
-                                        <div class="form-group row justify-content-center  ">
-                                            <label for="bio" class="col-12 col-lg-2 control-label">Bio
-                                                <small>(brief intro) *</small>
-                                            </label>
-                                            <div class="col-12 col-lg-6">
-                        <textarea name="bio" id="bio" class="form-control resize_vertical"
-                                  rows="4">{{$user->profile->bio}}</textarea>
-                                            </div>
-                                            {!! $errors->first('bio', '<span class="help-block">:message</span>') !!}
-                                        </div>
                                     </div>
                                     <div class="tab-pane" id="tab3" disabled="disabled">
                                         <div class="form-group row justify-content-center   {{ $errors->first('gender', 'has-error') }}">
-                                            <label for="email" class="col-12 col-lg-2 control-label">Gender *</label>
+                                            <label for="email" class="col-12 col-lg-2 control-label">Genre *</label>
                                             <div class="col-12 col-lg-6">
                                                 <select class="form-control" title="Select Gender..." name="gender">
                                                     <option value="">Select</option>
@@ -224,10 +213,6 @@
                                                             @if($user->profile->gender === 'female') selected="selected" @endif >
                                                         Female
                                                     </option>
-                                                    <option value="other"
-                                                            @if($user->profile->gender === 'other') selected="selected" @endif >
-                                                        Other
-                                                    </option>
 
                                                 </select>
                                                 <span class="help-block">{{ $errors->first('gender', ':message') }}</span>
@@ -235,39 +220,10 @@
 
                                         </div>
 
-                                        <div class="form-group row justify-content-center   {{ $errors->first('country', 'has-error') }}">
-                                            <label for="country" class="col-12 col-lg-2 control-label">Country</label>
-                                            <div class="col-12 col-lg-6">
-                                                <input id="countries" name="country" type="text"
-                                                       class="form-control"
-                                                       value="{{$user->profile->country}}"/>
-                                                <span class="help-block">{{ $errors->first('country', ':message') }}</span>
 
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row justify-content-center   {{ $errors->first('state', 'has-error') }}">
-                                            <label for="state" class="col-12 col-lg-2 control-label">State</label>
-                                            <div class="col-12 col-lg-6">
-                                                <input id="state" name="state" type="text"
-                                                       class="form-control"
-                                                       value="{{$user->profile->state}}"/>
-                                                <span class="help-block">{{ $errors->first('state', ':message') }}</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row justify-content-center   {{ $errors->first('city', 'has-error') }}">
-                                            <label for="city" class="col-12 col-lg-2 control-label">City</label>
-                                            <div class="col-12 col-lg-6">
-                                                <input id="city" name="city" type="text" class="form-control"
-                                                       value="{{$user->profile->city}}"/>
-                                                <span class="help-block">{{ $errors->first('city', ':message') }}</span>
-
-                                            </div>
-                                        </div>
 
                                         <div class="form-group row justify-content-center   {{ $errors->first('address', 'has-error') }}">
-                                            <label for="address" class="col-12 col-lg-2 control-label">Address</label>
+                                            <label for="address" class="col-12 col-lg-2 control-label">Addresse</label>
                                             <div class="col-12 col-lg-6">
                                                 <input id="address" name="address" type="text" class="form-control"
                                                        value="{{$user->profile->address}}"/>
@@ -276,13 +232,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group row justify-content-center   {{ $errors->first('postal', 'has-error') }}">
-                                            <label for="postal" class="col-12 col-lg-2 control-label">Postal/zip</label>
+                                        <div class="form-group row justify-content-center  {{ $errors->first('phone', 'has-error') }}">
+                                            <label for="address" class="col-12 col-lg-2 control-label">Téléphone</label>
                                             <div class="col-12 col-lg-6">
-                                                <input id="postal" name="postal" type="text" class="form-control"
-                                                       value="{{$user->profile->postal}}"/>
-                                                <span class="help-block">{{ $errors->first('postal', ':message') }}</span>
-
+                                                <input id="phone" name="phone" type="text" class="form-control"
+                                                       value="{{ old('phone') }}"/>
+                                                <span class="help-block">{{ $errors->first('phone', ':phone') }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -290,13 +245,13 @@
                                     <hr class="mt-3">
                                     <div class="col-12 text-center">
                                         <ul class="pager wizard d-inline-block w-75 mx-auto my-0 ">
-                                            <li class="previous  float-left"><a href="#" class="border btn btn-outline">Previous</a>
+                                            <li class="previous  float-left"><a href="#" class="border btn btn-outline">Précédent</a>
                                             </li>
                                             <li class="next float-right"><a class="border btn btn-outline"
-                                                                            href="#">Next</a>
+                                                                            href="#">Suivant</a>
                                             </li>
                                             <li class="next float-right finish" style="display:none;"><a
-                                                        class="border btn btn-outline" href="javascript:;">Finish</a>
+                                                        class="border btn btn-outline" href="javascript:;">Terminer</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -306,7 +261,7 @@
 
 
                         @if(count($errors) > 0)
-                            <div class="alert alert-danger">Errors! Please fill form with proper details</div>
+                            <div class="alert alert-danger">Erreurs! S'il vous plaît remplir le formulaire avec les détails appropriés</div>
                         @endif
                     </div>
 

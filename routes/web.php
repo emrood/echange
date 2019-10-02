@@ -12,10 +12,16 @@
 */
 
 
-Route::get('/', function () {
-    return view('login');
-})->middleware('auth');
+//Route::get('/', function () {
+//    return redirect('/login');
+//})->middleware('auth');
 
+Route::post('login', 'Auth\LoginController@login');
+Route::get('login' , 'Auth\LoginController@login');
+Route::get('/'     , 'Auth\LoginController@login');
+
+
+Route::resource('home', 'HomeController');
 
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['admin', 'user']], function () {
     Route::get('/dashboard', function () {
@@ -482,7 +488,7 @@ Route::get('/sample','FrontEndController@getSample');
 
 
 
-Route::get('currency/currency/get-data','Currency\\CurrencyController@getData');
+Route::get('currency/get-data','Currency\\CurrencyController@getData');
 Route::resource('currency', 'Currency\\CurrencyController');
-Route::get('history/rate-history/get-data','RateHistory\\RateHistoryController@getData');
+Route::get('history/get-data','RateHistory\\RateHistoryController@getData');
 Route::resource('history', 'RateHistory\\RateHistoryController');

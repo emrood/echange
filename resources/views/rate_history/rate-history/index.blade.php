@@ -1,14 +1,18 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Ratehistory | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Historique | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Ratehistory'])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Historique'])
 @endsection
 
 @push('before-css')
     <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
 @endpush
 
+@php
+    setlocale(LC_ALL,"fr_FR");
+    setlocale(LC_TIME, "fr_FR");
+@endphp
 @section('content')
     <div class="container-fluid">
            <div class="row">
@@ -16,17 +20,20 @@
                    <div class="card">
                     <div class="card-body">
                        <div class="d-block text-center">
-                        <a href="{{ url('/history/rate-history/create') }}" class="btn btn-success btn-sm" title="Add New RateHistory">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
+                        {{--<a href="{{ url('/history/rate-history/create') }}" class="btn btn-success btn-sm" title="Add New RateHistory">--}}
+                            {{--<i class="fa fa-plus" aria-hidden="true"></i> Add New--}}
+                        {{--</a>--}}
                         </div>
-
 
                         <div class="table-responsive" >
                             <table class="table table-bordered" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th>No</th><th>User Id</th><th>Currency Id</th><th>Sale Rate</th><th>Actions</th>
+                                        <th>Devise</th>
+                                        <th>Taux de vente</th>
+                                        <th>Taux d'achat</th>\
+                                        <th>Modifier le</th>
+                                        <th>Modifier par</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,7 +72,7 @@
                 return false;
             }
         });
-        var route = '{{asset('history/rate-history/get-data')}}';
+        var route = '{{asset('history/get-data')}}';
 
         $('#myTable').DataTable({
             processing: true,
@@ -73,16 +80,23 @@
             iDisplayLength: 10,
             retrieve: true,
             ajax: route,
+            {{--columns: [--}}
+                    {{--{data: "DT_RowIndex", name: 'DT_RowIndex',width:'5%'},--}}
+                    {{--@foreach($columns as $column)--}}
+                    {{--{--}}
+                    {{--data: "{{$column}}", name: '{{$column}}'--}}
+                    {{--},--}}
+                    {{--@endforeach--}}
+                    {{--{--}}
+                    {{--data: "actions", name: "actions"--}}
+                    {{--}--}}
+                    {{--],--}}
             columns: [
-                {data: "DT_RowIndex", name: 'DT_RowIndex',width:'5%'},
-                    @foreach($columns as $column)
-                {
-                    data: "{{$column}}", name: '{{$column}}'
-                },
-                    @endforeach
-                {
-                    data: "actions", name: "actions"
-                }
+                {data: 'Devise', name: 'Devise'},
+                {data: 'sale_rate', name: 'sale_rate'},
+                {data: 'purchase_rate', name: 'purchase_rate'},
+                {data: 'Date', name: 'Date'},
+                {data: 'utilisateur', name: 'utilisateur'},
             ],
 
         });

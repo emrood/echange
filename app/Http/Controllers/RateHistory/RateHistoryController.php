@@ -19,7 +19,7 @@ class RateHistoryController extends Controller
     public function index(Request $request)
     {
         if (!Gate::allows('view-ratehistory')) {
-                return abort(401);
+            return abort(401);
         }
 
         $ratehistory = new RateHistory();
@@ -29,34 +29,35 @@ class RateHistoryController extends Controller
     }
 
 
-     public function getData(Request $request)
-        {
-             $ratehistory = RateHistory::get();
-            return DataTables::of($ratehistory)
-                ->addIndexColumn()
-                ->addColumn('actions', function ($q) use ($request) {
-                    $view = "";
-                    $show = view('backend.datatable.action-view')
-                        ->with(['route' => asset('ratehistory/'.$q->id),'label' => 'ratehistory'])
-                        ->render();
-                    $view .= $show;
-                    $edit = view('backend.datatable.action-edit')
-                        ->with(['route' => asset('ratehistory/'.$q->id.'/edit'), 'label' => 'ratehistory'])
-                        ->render();
-                    $view .= $edit;
+    public function getData(Request $request)
+    {
 
-                    $delete = view('backend.datatable.action-delete')
-                        ->with(['route' => asset('ratehistory/'.$q->id),'label' => ' ratehistory'])
-                        ->render();
-                    $view .= $delete;
+        setlocale(LC_ALL, "fr_FR");
+        setlocale(LC_TIME, "fr_FR");
 
-                    return $view;
 
-                })
-                ->rawColumns(['actions'])
-                ->make();
-        }
+        $ratehistory = RateHistory::get();
+        return DataTables::of($ratehistory)
+            ->addIndexColumn()
+            ->addColumn('utilisateur', function (RateHistory $history) {
+//                    dd($history->user());
+                return $history->user()->name;
+            })
+            ->addColumn('Devise', function (RateHistory $history) {
+                return $history->currency()->abbreviation;
+            })
+            ->addColumn('Taux de vente', function (RateHistory $history) {
+                return $history->sale_rate;
+            })
+            ->addColumn("Taux d'achat", function (RateHistory $history) {
+                return $history->purchase_rate;
+            })
+            ->addColumn('Date', function (RateHistory $history) {
 
+                return strftime("%c", strtotime($history->updated_at));
+            })
+            ->make();
+    }
 
 
     /**
@@ -67,7 +68,7 @@ class RateHistoryController extends Controller
     public function create()
     {
         if (!Gate::allows('add-ratehistory')) {
-                    return abort(401);
+            return abort(401);
         }
         return view('rate_history.rate-history.create');
     }
@@ -81,19 +82,19 @@ class RateHistoryController extends Controller
      */
     public function store(Request $request)
     {
-         if (!Gate::allows('add-ratehistory')) {
-             return abort(401);
-         }
+        if (!Gate::allows('add-ratehistory')) {
+            return abort(401);
+        }
 
         $this->validate($request, [
-			'user_id' => 'required',
-			'currency_id' => 'required',
-			'sale_rate' => 'required',
-			'purchase_rate' => 'required',
-			'date' => 'required'
-		]);
+            'user_id' => 'required',
+            'currency_id' => 'required',
+            'sale_rate' => 'required',
+            'purchase_rate' => 'required',
+            'date' => 'required'
+        ]);
         $requestData = $request->all();
-        
+
         RateHistory::create($requestData);
 
         return redirect('history/rate-history')->with('message', 'RateHistory added!');
@@ -102,14 +103,14 @@ class RateHistoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return \Illuminate\View\View
      */
     public function show($id)
     {
         if (!Gate::allows('view-ratehistory')) {
-             return abort(401);
+            return abort(401);
         }
 
         $ratehistory = RateHistory::findOrFail($id);
@@ -120,14 +121,14 @@ class RateHistoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return \Illuminate\View\View
      */
     public function edit($id)
     {
         if (!Gate::allows('edit-ratehistory')) {
-                 return abort(401);
+            return abort(401);
         }
         $ratehistory = RateHistory::findOrFail($id);
 
@@ -138,25 +139,25 @@ class RateHistoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param  int  $id
+     * @param  int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-       if (!Gate::allows('edit-ratehistory')) {
-           return abort(401);
-       }
+        if (!Gate::allows('edit-ratehistory')) {
+            return abort(401);
+        }
 
         $this->validate($request, [
-			'user_id' => 'required',
-			'currency_id' => 'required',
-			'sale_rate' => 'required',
-			'purchase_rate' => 'required',
-			'date' => 'required'
-		]);
+            'user_id' => 'required',
+            'currency_id' => 'required',
+            'sale_rate' => 'required',
+            'purchase_rate' => 'required',
+            'date' => 'required'
+        ]);
         $requestData = $request->all();
-        
+
         $ratehistory = RateHistory::findOrFail($id);
         $ratehistory->update($requestData);
 
@@ -166,14 +167,14 @@ class RateHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
         if (!Gate::allows('delete-ratehistory')) {
-           return abort(401);
+            return abort(401);
         }
 
         RateHistory::destroy($id);

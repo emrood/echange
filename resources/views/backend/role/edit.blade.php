@@ -22,7 +22,7 @@
                                 <form class="form-horizontal" method="post" action="{{url('role/'.$role->id.'/edit')}}">
                                     {{csrf_field()}}
                                     <div class="form-group text-center">
-                                        <label for="name" class="col-lg-3 col-12 control-label">Role Name</label>
+                                        <label for="name" class="col-lg-3 col-12 control-label">Nom du role</label>
                                         <div class="col-12 col-lg-7 mx-auto">
                                             <input type="text"
                                                    class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -36,15 +36,15 @@
 
                                     <table class="table table-striped table-responsive">
                                         <tr>
-                                            <th colspan="6" class="text-center">Grant Permissions</th>
+                                            <th colspan="6" class="text-center">Accorder des autorisations</th>
                                         </tr>
                                         <tr>
                                             <th>No.</th>
                                             <th>Menu</th>
-                                            <th class="text-center">View</th>
-                                            <th class="text-center">Add</th>
-                                            <th class="text-center">Edit</th>
-                                            <th class="text-center">Delete</th>
+                                            <th class="text-center">Voir</th>
+                                            <th class="text-center">Ajouter</th>
+                                            <th class="text-center">Editer</th>
+                                            <th class="text-center">Supprimer</th>
                                         </tr>
                                         @foreach($laravelAdminMenus->menus as $section)
                                             @if(count(collect($section->items)) > 0)
@@ -107,9 +107,9 @@
                                     <div class="form-group m-b-0">
                                         <div class="col-md-12 text-center">
                                             <a class="btn btn-danger m-t-10 mr-5"
-                                               href="{{url('role-management')}}">Back</a>
+                                               href="{{url('role-management')}}">Retour</a>
                                             <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">
-                                                Update
+                                                Mettre à jour
                                             </button>
                                         </div>
                                     </div>

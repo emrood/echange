@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('title') {{ 'Home | '.env('APP_NAME') }} @endsection
 

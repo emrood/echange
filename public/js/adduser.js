@@ -24,7 +24,7 @@ $("#commentForm").bootstrapValidator({
         name: {
             validators: {
                 notEmpty: {
-                    message: 'The name is required'
+                    message: 'Le nom est obligatoire'
                 }
             },
             required: true,
@@ -33,11 +33,11 @@ $("#commentForm").bootstrapValidator({
         password: {
             validators: {
                 notEmpty: {
-                    message: 'Password is required'
+                    message: 'Le mot de passe est obligatoire'
                 },
                 different: {
                     field: 'first_name,last_name',
-                    message: 'Password should not match first name'
+                    message: 'Le mot de passe ne doit pas correspondre au nom'
                 },
                 minlength: 3
             }
@@ -45,31 +45,31 @@ $("#commentForm").bootstrapValidator({
         password_confirmation: {
             validators: {
                 notEmpty: {
-                    message: 'Confirm Password is required'
+                    message: 'Le mot de passe doit etre confirmer'
                 },
                 identical: {
                     field: 'password'
                 },
                 different: {
                     field: 'first_name,last_name',
-                    message: 'Confirm Password should match with password'
+                    message: 'Les mots de passe doivent etre les memes'
                 }
             }
         },
         email: {
             validators: {
                 notEmpty: {
-                    message: 'The email address is required'
+                    message: 'L\'adresse email est obligatoire'
                 },
                 emailAddress: {
-                    message: 'The input is not a valid email address'
+                    message: 'L\'entrée n\'est pas une adresse email valide'
                 }
             }
         },
         bio: {
             validators: {
                 notEmpty: {
-                    message: 'Bio is required and cannot be empty'
+                    message: 'Bio est requis et ne peut pas être vide'
                 }
             },
             minlength: 20
@@ -78,7 +78,7 @@ $("#commentForm").bootstrapValidator({
         gender: {
             validators: {
                 notEmpty: {
-                    message: 'Please select a gender'
+                    message: 'Veuillez choisir un genre'
                 }
             }
         },
@@ -86,7 +86,7 @@ $("#commentForm").bootstrapValidator({
         group: {
             validators:{
                 notEmpty:{
-                    message: 'You must select a group'
+                    message: 'Vous devez sélectionner un groupe'
                 }
             }
         }

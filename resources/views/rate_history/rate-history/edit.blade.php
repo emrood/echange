@@ -8,6 +8,10 @@
 @push('before-css')
 
 @endpush
+@php
+    setlocale(LC_ALL,"fr_FR");
+    setlocale(LC_TIME, "fr_FR");
+@endphp
 @section('content')
     <div class="container-fluid">
         <div class="row">

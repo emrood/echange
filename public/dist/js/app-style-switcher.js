@@ -24,7 +24,8 @@ $(function () {
             // do that
         }
         $('.theme-color .theme-item .theme-link').on("click", function () {
-            var navbarbgskin = $(this).attr("data-navbarbg");
+            // var navbarbgskin = $(this).attr("data-navbarbg");
+            var navbarbgskin = 'skin2';
             $('#main-wrapper').attr("data-navbarbg", navbarbgskin);
             $('.topbar .navbar-collapse').attr("data-navbarbg", navbarbgskin);
             if ($('#main-wrapper').attr('data-navbarbg') == 'skin3') {

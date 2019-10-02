@@ -27,7 +27,7 @@ class Currency extends Model
      *
      * @var array
      */
-    protected $fillable = ['test'];
+    protected $fillable = ['abbreviation', 'sale_rate', 'purchase_rate', 'date'];
 
     
 

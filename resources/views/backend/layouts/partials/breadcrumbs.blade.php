@@ -5,7 +5,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{asset('/')}}" class="link">Home</a>
+                            <a href="{{asset('/dashboard')}}" class="link">Acceuil</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">@yield('page-title',isset($current) ? $current : '')</li>
                     </ol>

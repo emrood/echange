@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Activity Log | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Journal d\'activité | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Activity Log'])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Journal d\'activité'])
 @endsection
 
 @push('before-css')
@@ -23,9 +23,9 @@
                                         <thead>
                                         <tr class="filters">
                                             <th>UserID</th>
-                                            <th>User Name</th>
+                                            <th>Utilisateur</th>
                                             <th>Description</th>
-                                            <th>Created At</th>
+                                            <th>Date & Heure</th>
                                         </tr>
                                         </thead>
                                         <tbody>

@@ -1,14 +1,18 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'View Currency  | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Devise  | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'View Currency #'.$currency->id])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Devise #'.$currency->id])
 @endsection
 
 @push('before-css')
 
 @endpush
 
+@php
+    setlocale(LC_ALL,"fr_FR");
+    setlocale(LC_TIME, "fr_FR");
+@endphp
 
 @section('content')
     <div class="container-fluid">
@@ -17,30 +21,56 @@
             <div class="col-sm-12">
                 <div class="white-box card">
                     <div class="card-body">
-                        <a href="{{ url('/currency/currency') }}" title="Back"><button class="btn btn-warning mr-3 btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/currency/currency/' . $currency->id . '/edit') }}" title="Edit Currency"><button class="btn btn-primary btn-sm mr-3"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['currency/currency', $currency->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                        <a href="{{ url('/currency') }}" title="Back">
+                            <button class="btn btn-warning mr-3 btn-sm"><i class="fa fa-arrow-left"
+                                                                           aria-hidden="true"></i> Retour
+                            </button>
+                        </a>
+                        @if($currency->editable)
+                            <a href="{{ url('/currency/' . $currency->id . '/edit') }}" title="Edit Currency">
+                                <button class="btn btn-primary btn-sm mr-3"><i class="fa fa-pencil-square-o"
+                                                                               aria-hidden="true"></i> Editer
+                                </button>
+                            </a>
+                            {!! Form::open([
+                                'method'=>'DELETE',
+                                'url' => ['currency/', $currency->id],
+                                'style' => 'display:inline'
+                            ]) !!}
+                            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-sm',
                                     'title' => 'Delete Currency',
                                     'onclick'=>'return confirm("Confirm delete?")'
                             ))!!}
-                        {!! Form::close() !!}
+                            {!! Form::close() !!}
+                        @endif
                         <br/>
                         <br/>
 
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $currency->id }}</td>
-                                    </tr>
-                                    <tr><th> Test </th><td> {{ $currency->test }} </td></tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <td>{{ $currency->id }}</td>
+                                </tr>
+                                <tr>
+                                    <th> Abbreviation</th>
+                                    <td> {{ $currency->abbreviation }} </td>
+                                </tr>
+                                <tr>
+                                    <th> Taux de vente</th>
+                                    <td> {{ $currency->sale_rate }} </td>
+                                </tr>
+                                <tr>
+                                    <th> Taux d'achat</th>
+                                    <td> {{ $currency->purchase_rate }} </td>
+                                </tr>
+                                <tr>
+                                    <th>Dernière mise a jour</th>
+                                    <td> {{ strftime("%e %B %Y", strtotime($currency->date)) }} </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

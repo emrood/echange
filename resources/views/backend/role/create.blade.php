@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Create Role | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Créer un role | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Create Role'])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Créer un role'])
 @endsection
 
 @push('before-css')
@@ -20,7 +20,7 @@
                                 <form class="form-horizontal" method="post" action="{{url('role/create')}}">
                                     {{csrf_field()}}
                                     <div class="form-group text-center">
-                                        <label for="name" class="col-lg-3 col-12 control-label">Role Name</label>
+                                        <label for="name" class="col-lg-3 col-12 control-label">Nom du role</label>
                                         <div class="col-lg-7 col-12 mx-auto">
                                             <input type="text"
                                                    class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -34,15 +34,15 @@
 
                                     <table class="table table-striped table-responsive">
                                         <tr>
-                                            <th colspan="6" class="text-center">Grant Permissions</th>
+                                            <th colspan="6" class="text-center">Accorder des autorisations</th>
                                         </tr>
                                         <tr>
                                             <th>No.</th>
                                             <th>Menu</th>
-                                            <th class="text-center">View</th>
-                                            <th class="text-center">Add</th>
-                                            <th class="text-center">Edit</th>
-                                            <th class="text-center">Delete</th>
+                                            <th class="text-center">Voir</th>
+                                            <th class="text-center">Ajouter</th>
+                                            <th class="text-center">Editer</th>
+                                            <th class="text-center">Supprimer</th>
                                         </tr>
                                         @foreach($laravelAdminMenus->menus as $section)
                                             @if(count(collect($section->items)) > 0)
@@ -96,10 +96,10 @@
                                     <div class="form-group m-b-0">
                                         <div class="col-md-12 text-center">
                                             <a class="btn btn-danger m-t-10 mr-5"
-                                               href="{{url('role-management')}}">Back</a>
+                                               href="{{url('role-management')}}">Retour</a>
                                             <button type="submit"
                                                     class="btn btn-success waves-effect waves-light m-t-10">
-                                                Grant
+                                                Autoriser
                                             </button>
                                         </div>
                                     </div>

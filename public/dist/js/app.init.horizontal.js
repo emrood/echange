@@ -6,7 +6,7 @@ $(function () {
         NavbarBg: 'skin2', // You can change the Value to be skin1/skin2/skin3
         class: 'boxed-layout', // Class box layout
         SidebarType: 'full', // You can change it full / mini-sidebar
-        SidebarColor: 'skin3', // You can change the Value to be skin1/skin2/skin3
+        SidebarColor: 'skin2', // You can change the Value to be skin1/skin2/skin3
         SidebarPosition: true, // it can be true / false ( true means Fixed and false means absolute )
         HeaderPosition: true // it can be true / false ( true means Fixed and false means absolute )
     });
