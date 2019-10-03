@@ -28,5 +28,5 @@
 <div class="form-group">
  <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-danger btn-sm mr-5"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
 
-    {!! Form::submit($formMode === 'edit' ? 'Update' : 'Create', ['class' => 'btn btn-primary btn-sm']) !!}
+    {!! Form::submit($formMode === 'edit' ? 'Update' : 'Create', ['class' => 'btn btn-info btn-sm']) !!}
 </div>

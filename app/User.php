@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use App\HasRoles;
@@ -63,5 +64,15 @@ class User extends Authenticatable
     }
     public function blogs(){
         return $this->hasMany(Blog::class);
+    }
+
+    public function funds(){
+//        $fund = CashFund::whereDate('date', Carbon::today()->toDateString())->where('cashier_id', $this->id)->first();
+//        if($fund){
+//            return $fund;
+//        }else{
+//            return null;
+//        }
+        return $this->hasMany(CashFund::class, 'cashier_id', 'id');
     }
 }

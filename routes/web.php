@@ -461,17 +461,11 @@ Route::get('log-viewers/logs/{date}/{level}', '\Arcanedev\LogViewer\Http\Control
 Route::get('log-viewers/logs/{date}/{level}/search', '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@search')->name('log-viewers.logs.search');
 Route::get('log-viewers/logcheck', '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@logCheck')->name('log-viewers.logcheck');
 
-
 //===================== Default Auth Routes =======================//
-
 Route::get('auth/{provider}/', 'Auth\SocialLoginController@redirectToProvider');
 Route::get('{provider}/callback', 'Auth\SocialLoginController@handleProviderCallback');
 Route::get('logout', 'Auth\LoginController@logout');
-
 Auth::routes();
-
-
-
 //=================== Blog Frontend Routes ======================//
 
 Route::get('blogs', 'BlogController@getBlogList');
@@ -486,9 +480,12 @@ Route::get('/','FrontEndController@index');
 Route::get('/sample','FrontEndController@getSample');
 //=================== New CRUD Routes =========================//
 
-
-
 Route::get('currency/get-data','Currency\\CurrencyController@getData');
 Route::resource('currency', 'Currency\\CurrencyController');
 Route::get('history/get-data','RateHistory\\RateHistoryController@getData');
 Route::resource('history', 'RateHistory\\RateHistoryController');
+
+Route::get('cash-fund/{uid}/cancel', 'CashFundController@cancel');
+Route::resource('cash-fund', 'CashFundController');
+Route::get('change/getrate', 'ChangeController@getratesale');
+Route::resource('change', 'ChangeController');

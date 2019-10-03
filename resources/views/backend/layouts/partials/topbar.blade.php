@@ -66,7 +66,9 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Taux du jour</a>
-                        {{--<a class="dropdown-item" href="#">Another action</a>--}}
+                        @if(Auth::check() && Auth::user()->isAdmin())
+                            <a class="dropdown-item" href="#">Balance</a>
+                        @endif
                         {{--<div class="dropdown-divider"></div>--}}
                         {{--<a class="dropdown-item" href="#">Something else here</a>--}}
                     </div>

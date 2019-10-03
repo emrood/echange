@@ -4,6 +4,14 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
+
+                <li class="sidebar-item">
+                    <a href="{{asset('change')}}" class="sidebar-link">
+                        <i data-feather="shuffle" class="mr-2"></i>
+                        <span class="hide-menu">Transactions</span>
+                    </a>
+                </li>
+
                 @if(auth()->check() && auth()->user()->isAdmin() == true)
                     <li class="sidebar-item">
                         <a href="{{asset('index')}}" class="sidebar-link">
@@ -12,20 +20,69 @@
                         </a>
                     </li>
 
-                    @foreach($laravelAdminMenus->menus as $section)
-                        @if(count(collect($section->items)) > 0)
-                            @foreach($section->items as $menu)
-                                @can('view-'.Str::slug($menu->title))
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link" href="{{ url($menu->url) }}">
-                                            <i class="{{$menu->icon}} mr-2"></i>
-                                            <span class="hide-menu">{{ $menu->title }}</span>
-                                        </a>
-                                    </li>
-                                @endcan
-                            @endforeach
-                        @endif
-                    @endforeach
+                    <li class="sidebar-item">
+                        <a href="{{asset('cash-fund')}}" class="sidebar-link">
+                            <i data-feather="trello" class="mr-2"></i>
+                            <span class="hide-menu"> Fond de caisse </span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false">
+                            <i data-feather="book-open" class="mr-2"></i>
+                            <span class="hide-menu">Rapports</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="{{url('#')}}" class="sidebar-link">
+                                    <i data-feather="droplet" class="mr-2"></i>
+                                    <span class="hide-menu">Liste des transactions</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{url('#')}}" class="sidebar-link">
+                                    <i data-feather="droplet" class="mr-2"></i>
+                                    <span class="hide-menu">Chiffre d'affaire</span>
+                                </a>
+                            </li>
+                            {{--<li class="sidebar-item">--}}
+                                {{--<a href="{{url('user/deleted')}}" class="sidebar-link">--}}
+                                    {{--<i data-feather="droplet" class="mr-2"></i>--}}
+                                    {{--<span class="hide-menu">Autre</span>--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="{{asset('currency')}}" class="sidebar-link">
+                            <i data-feather="dollar-sign" class="mr-2"></i>
+                            <span class="hide-menu">Devises</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="{{asset('history')}}" class="sidebar-link">
+                            <i data-feather="rotate-ccw" class="mr-2"></i>
+                            <span class="hide-menu">Historique</span>
+                        </a>
+                    </li>
+
+                    {{--@foreach($laravelAdminMenus->menus as $section)--}}
+                        {{--@if(count(collect($section->items)) > 0)--}}
+                            {{--@foreach($section->items as $menu)--}}
+                                {{--@can('view-'.Str::slug($menu->title))--}}
+                                    {{--<li class="sidebar-item">--}}
+                                        {{--<a class="sidebar-link" href="{{ url($menu->url) }}">--}}
+                                            {{--<i class="{{$menu->icon}} mr-2"></i>--}}
+                                            {{--<span class="hide-menu">{{ $menu->title }}</span>--}}
+                                        {{--</a>--}}
+                                    {{--</li>--}}
+                                {{--@endcan--}}
+                            {{--@endforeach--}}
+                        {{--@endif--}}
+                    {{--@endforeach--}}
 
 
                     <li class="sidebar-item">
@@ -63,6 +120,19 @@
                         </ul>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{url('activity-log')}}">
+                            <i data-feather="alert-triangle" class="mr-2"></i>
+                            <span class="hide-menu">Journal d'activité</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{url('account-settings')}}">
+                            <i data-feather="settings" class="mr-2"></i>
+                            <span class="hide-menu">Paramètres du compte</span>
+                        </a>
+                    </li>
 
 
                     {{--<li class="sidebar-item">--}}
@@ -87,30 +157,9 @@
                         {{--</ul>--}}
                     {{--</li>--}}
 
-
-
-                @else
-                    <li class="sidebar-item">
-                        <a href="{{asset('dashboard')}}" class="sidebar-link">
-                            <i data-feather="droplet" class="mr-2"></i>
-                            <span class="hide-menu"> Dashboard </span>
-                        </a>
-                    </li>
                 @endif
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('activity-log')}}">
-                        <i data-feather="alert-triangle" class="mr-2"></i>
-                        <span class="hide-menu">Journal d'activité</span>
-                    </a>
-                </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('account-settings')}}">
-                        <i data-feather="settings" class="mr-2"></i>
-                        <span class="hide-menu">Paramètres du compte</span>
-                    </a>
-                </li>
                 <li>
                     <hr style="background: #fff;opacity: 0.5">
                 </li>

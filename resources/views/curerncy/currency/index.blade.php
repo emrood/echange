@@ -65,6 +65,7 @@
                 return false;
             }
         });
+
         var route = '{{asset('currency/currency/get-data')}}';
 
         $('#myTable').DataTable({
