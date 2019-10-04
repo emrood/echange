@@ -15,9 +15,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-block text-center" style="margin-bottom: 10px;">
-                            <a href="{{ url('/cash-fund/create') }}" class="btn btn-success btn-sm" title="Add New Currency">
+                        <div class="d-block text-center" style="margin-bottom: 50px;">
+
+                            <a href="{{ url('/cash-fund/create') }}" class="btn btn-success btn-sm" style="float: right !important;" title="Cash fund">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Enregistrer un fond de caisse
+                            </a>
+
+                            <a href="{{ url('/cash-fund/create') }}" style="float: right !important; margin-right: 20px" class="btn btn-info btn-sm pull-right"  title="Deposit">
+                                <i class="fa fa-ticket-alt" aria-hidden="true"></i> Dépot
                             </a>
                         </div>
 

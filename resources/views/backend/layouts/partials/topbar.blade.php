@@ -65,7 +65,7 @@
                         <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Taux du jour</a>
+                        <a class="dropdown-item link-to-rate" href="#"data-toggle="modal" data-target=".modalRate">Taux du jour</a>
                         @if(Auth::check() && Auth::user()->isAdmin())
                             <a class="dropdown-item link-to-balance" href="#" data-userId="{{Auth::user()->id}}" data-toggle="modal" data-target=".modal-balance">Balance</a>
                         @endif

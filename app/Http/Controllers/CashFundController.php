@@ -230,4 +230,9 @@ class CashFundController extends Controller
 
         return response()->json('error', 404);
     }
+
+
+    public function deposit(){
+
+    }
 }

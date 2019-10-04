@@ -43,8 +43,8 @@
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
-<div id="main-wrapper"  class="@if(session()->get('theme-layout') == 'fix-header')
-       boxed-layout @endif">
+<div id="main-wrapper" class="@if(session()->get('theme-layout') == 'fix-header')
+        boxed-layout @endif">
 
 
     <!-- ============================================================== -->
@@ -105,53 +105,23 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">Live Balance <span class="fa fa-money-bill-alt"></span></h4>
+                    <h4 class="modal-title" id="myLargeModalLabel">Chiffre d'affaires par utilisateur <span
+                                class="fa fa-money-bill-alt"></span></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
                     <div class="card">
-                        {{--<div class="card-body">--}}
-                            {{--<h4 class="card-title">Table Header</h4>--}}
-                            {{--<h6 class="card-subtitle">Similar to tables, use the modifier classes .thead-light to--}}
-                                {{--make <code>&lt;thead&gt;</code>s appear light.</h6>--}}
-                        {{--</div>--}}
-                        <div class="table-responsive table-balance">
-                            <table class="table">
-                                <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                                </tbody>
+
+                        <div class="table-responsive table-balance-container" style="display: none">
+                            <table class="table table-balance">
+
                             </table>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger waves-effect text-left"
-                            data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-dark waves-effect text-left" data-dismiss="modal">Fermer
+                    </button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -163,6 +133,40 @@
     <!-- ============================================================== -->
     {{--@include('backend.layouts.partials.customiser-panel')--}}
 @endif
+
+<!-- sample modal content -->
+
+<div class="modal fade bs-example-modal-lg modalRate" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Taux du jour</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive table-rate-container" style="display: none">
+                    <table class="table table-rate">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Abbreviation</th>
+                            <th scope="col">Taux de vente</th>
+                            <th scope="col">Taux d'achat</th>
+                        </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info waves-effect text-left" data-dismiss="modal">fermer</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
@@ -176,16 +180,16 @@
 
 
 {{--@if(session()->get('theme-layout') == 'fix-header')--}}
-    {{--<script src="{{asset('dist/js/app.init.horizontal.js')}}"></script>--}}
-    {{--<script src="{{asset('dist/js/app.init.mini-sidebar.js')}}"></script>--}}
-    {{--<!---=========== Use Above JS for Horizontal Layout ==========--->--}}
+{{--<script src="{{asset('dist/js/app.init.horizontal.js')}}"></script>--}}
+{{--<script src="{{asset('dist/js/app.init.mini-sidebar.js')}}"></script>--}}
+{{--<!---=========== Use Above JS for Horizontal Layout ==========--->--}}
 {{--@elseif(session()->get('theme-layout') == 'mini-sidebar')--}}
 
-    {{--<script src="{{asset('dist/js/app.init.mini-sidebar.js')}}"></script>--}}
-    {{--<!---========= Use Above JS for Mini Sidebar Layout =========--->--}}
+{{--<script src="{{asset('dist/js/app.init.mini-sidebar.js')}}"></script>--}}
+{{--<!---========= Use Above JS for Mini Sidebar Layout =========--->--}}
 {{--@else--}}
-    {{--<script src="{{asset('dist/js/app.init.js')}}"></script>--}}
-    {{--<!---========= Use Above JS Default Layout ==========--->--}}
+{{--<script src="{{asset('dist/js/app.init.js')}}"></script>--}}
+{{--<!---========= Use Above JS Default Layout ==========--->--}}
 {{--@endif--}}
 <script src="{{asset('dist/js/app.init.js')}}"></script>
 
