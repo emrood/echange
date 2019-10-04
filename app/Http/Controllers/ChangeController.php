@@ -23,13 +23,10 @@ class ChangeController extends Controller
     {
         //
         if (Auth::check()) {
-
             $array_currency = array();
             $currencies = Currency::all();
-            $cashFund = CashFund::whereDate('date', Carbon::today()->toDateString())->where('cashier_id', Auth::user()->id)->first();
-
+            $cashFund = CashFund::whereDate('date', Carbon::today()->toDateString())->where('cashier_id', Auth::user()->id)->where('is_canceled', false)->first();
             if ($cashFund) {
-//                dd($cashFund->funds);
                 foreach ($cashFund->funds->where('currency_id', '>', 1) as $fund) {
                     $array_currency[$fund->currency->id] = $fund->currency->abbreviation . ' -----> ' . Currency::where('is_reference', true)->first()->abbreviation;
                 }
@@ -66,7 +63,7 @@ class ChangeController extends Controller
     {
 //        dd($request->all());
         if (Auth::check()) {
-            $cashFund = Auth::user()->funds()->whereDate('date', Carbon::today()->toDateString())->first();
+            $cashFund = Auth::user()->funds()->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->first();
             if($cashFund != null){
                 $currency = Currency::find($request->change_type);
                 if($currency){
@@ -80,6 +77,22 @@ class ChangeController extends Controller
                     $change->uid = md5(uniqid(Auth::user()->id, true));
 
                     if($change->save()){
+
+                        $cashFund->is_locked = true;
+                        $cashFund->save();
+                        //Mise a jour de la caisse
+                        $withdrawal = $cashFund->funds()->where('currency_id', 1)->first();
+                        if($withdrawal){
+                            $withdrawal->amount -= $change->given_amount;
+                            $withdrawal->save();
+                        }
+
+
+                        $deposit = $cashFund->funds()->where('currency_id', $request->change_type)->first();
+                        if($deposit){
+                            $deposit->amount += $change->amount_received;
+                            $deposit->save();
+                        }
 
                         if($request->has('print')){
                           //TODO PRINT TICKET

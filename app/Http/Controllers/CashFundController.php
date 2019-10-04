@@ -57,7 +57,7 @@ class CashFundController extends Controller
                 'currency_amount' => 'required',
             ]);
 
-            dd($request->all());
+//            dd($request->all());
             $cashFund = CashFund::whereDate('date', Carbon::today()->toDateString())->where( 'cashier_id', $request->cashier_id)->first();
 
             if($cashFund == null){
@@ -205,5 +205,29 @@ class CashFundController extends Controller
     public function destroy(CashFund $cashFund)
     {
         //
+    }
+
+    public function balance($user_id){
+        $user = User::find($user_id);
+        if($user){
+            if($user->isAdmin()){
+                $cashFuns = CashFund::whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->get();
+                $currencies = Currency::all();
+                $array_balance = array();
+                foreach ($currencies as $currency){
+                    $array_balance['utilisateur\devise'][$currency->id] = [$currency->abbreviation];
+                }
+
+                foreach ($cashFuns as $cashFun){
+                    foreach ($cashFun->funds as $fund){
+                        $array_balance[$cashFun->cashier->name][$fund->currency->id] = [$fund->amount];
+                    }
+                }
+
+                return response()->json($array_balance, 200);
+            }
+        }
+
+        return response()->json('error', 404);
     }
 }

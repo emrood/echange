@@ -97,7 +97,67 @@
 <!-- ============================================================== -->
 <!-- End Wrapper -->
 <!-- ============================================================== -->
+<!--  -->
 @if(auth()->check() && auth()->user()->isAdmin())
+    <!-- Modal balance -->
+    <div class="modal fade modal-balance" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Live Balance <span class="fa fa-money-bill-alt"></span></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        {{--<div class="card-body">--}}
+                            {{--<h4 class="card-title">Table Header</h4>--}}
+                            {{--<h6 class="card-subtitle">Similar to tables, use the modifier classes .thead-light to--}}
+                                {{--make <code>&lt;thead&gt;</code>s appear light.</h6>--}}
+                        {{--</div>--}}
+                        <div class="table-responsive table-balance">
+                            <table class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Handle</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect text-left"
+                            data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
     <!-- ============================================================== -->
     <!-- customizer Panel -->
     <!-- ============================================================== -->
@@ -112,6 +172,8 @@
 <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- apps -->
 <script src="{{asset('dist/js/app.min.js')}}"></script>
+<script src="{{ asset('js/livedata.js') }}"></script>
+
 
 {{--@if(session()->get('theme-layout') == 'fix-header')--}}
     {{--<script src="{{asset('dist/js/app.init.horizontal.js')}}"></script>--}}

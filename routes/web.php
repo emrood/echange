@@ -486,6 +486,7 @@ Route::get('history/get-data','RateHistory\\RateHistoryController@getData');
 Route::resource('history', 'RateHistory\\RateHistoryController');
 
 Route::get('cash-fund/{uid}/cancel', 'CashFundController@cancel');
+Route::get('cash-fund/{user_id}/balance', 'CashFundController@balance');
 Route::resource('cash-fund', 'CashFundController');
 Route::get('change/getrate', 'ChangeController@getratesale');
 Route::resource('change', 'ChangeController');
