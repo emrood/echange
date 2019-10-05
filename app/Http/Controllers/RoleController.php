@@ -54,11 +54,24 @@ class RoleController extends Controller
             'name' => 'required'
         ]);
 
+//        dd($request->all());
         $role = Role::firstOrCreate(['name' => $request->name]);
-        if ($request->permissions != '' || $request->permissions != null) {
-            $role->permissions()->sync($request->permissions);
+
+        $permissions = $request->permissions;
+
+        foreach ($permissions as $key => $permission){
+            if(is_null($permission)){
+                unset($permissions[$key]);
+            }
         }
-        Session::flash('message', 'Role has been added');
+
+
+//        dd($permissions);
+
+        if ($request->permissions != '' || $request->permissions != null) {
+            $role->permissions()->sync($permissions);
+        }
+        Session::flash('message', 'Role enregistré');
         return redirect('role-management');
     }
 
@@ -66,7 +79,7 @@ class RoleController extends Controller
     {
         $role = Role::findOrfail($request->id);
         $role->delete();
-        Session::flash('message', 'Role has been deleted');
+        Session::flash('message', 'Role supprimé');
         return back();
     }
 
@@ -92,7 +105,7 @@ class RoleController extends Controller
             $role->permissions()->sync($request->permissions);
         }
 
-        Session::flash('message', 'Role has been updated');
+        Session::flash('message', 'Role mis à jour');
         return redirect('role-management');
     }
 }

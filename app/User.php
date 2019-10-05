@@ -62,6 +62,18 @@ class User extends Authenticatable
        }
        return $is_admin;
     }
+
+    public function isSupervisor(){
+        $is_supervisor = $this->roles()->where('name','Supervisor')->first();
+        if($is_supervisor != null){
+            $is_supervisor = true;
+        }else{
+            $is_supervisor = false;
+        }
+        return $is_supervisor;
+    }
+
+
     public function blogs(){
         return $this->hasMany(Blog::class);
     }

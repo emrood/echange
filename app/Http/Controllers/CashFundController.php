@@ -23,9 +23,15 @@ class CashFundController extends Controller
     public function index()
     {
         //
-        $cashFunds = CashFund::whereDate('date', Carbon::today()->toDateString())->get();
 
-        return view('cash_fund.index', compact('cashFunds'));
+        if(Auth::check() && Auth::user()->isAdmin()){
+            $cashFunds = CashFund::whereDate('date', Carbon::today()->toDateString())->get();
+
+            return view('cash_fund.index', compact('cashFunds'));
+        }
+
+        abort(401);
+
     }
 
     /**
@@ -36,10 +42,16 @@ class CashFundController extends Controller
     public function create()
     {
         //
-        $currencies = Currency::all();
-        $users = User::all();
+        if(Auth::check() && Auth::user()->isAdmin()){
 
-        return view('cash_fund.create', compact('currencies', 'users'));
+            $currencies = Currency::all();
+            $users = User::all();
+
+            return view('cash_fund.create', compact('currencies', 'users'));
+        }
+
+        abort(401);
+
     }
 
     /**

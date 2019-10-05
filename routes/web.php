@@ -489,4 +489,5 @@ Route::get('cash-fund/{uid}/cancel', 'CashFundController@cancel');
 Route::get('cash-fund/{user_id}/balance', 'CashFundController@balance');
 Route::resource('cash-fund', 'CashFundController');
 Route::get('change/getrate', 'ChangeController@getratesale');
+Route::get('change/list', 'ChangeController@list');
 Route::resource('change', 'ChangeController');

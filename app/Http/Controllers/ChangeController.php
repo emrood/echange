@@ -6,6 +6,7 @@ use App\CashFund;
 use App\Change;
 use App\Currency;
 use App\Http\Resources\CurrencyResources;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,37 @@ class ChangeController extends Controller
             }
 
             return view('change.index', compact('cashFund', 'array_currency', 'currencies'));
+        }
+
+        abort(401);
+    }
+
+    public function list(Request $request){
+
+        if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+
+            $from_date = Carbon::today()->toDateString();
+            $to_date = Carbon::today()->toDateString();
+            $users = User::all();
+            $currencies = Currency::where('is_reference', false)->get();
+            $user_id = '*';
+            $currency_id = '*';
+
+            if(!empty($request->all())){
+
+            }
+
+
+            $changes = Change::whereDate('created_at', [$from_date, $to_date]);
+            if($user_id != '*'){
+                $$changes = $changes->where('user_id', $user_id);
+            }
+
+            $changes = $changes->get();
+
+//            dd($changes);
+
+            return view('change.list', compact('changes', 'user_id', 'currency_id', 'from_date', 'to_date', 'users', 'currencies'));
         }
 
         abort(401);
