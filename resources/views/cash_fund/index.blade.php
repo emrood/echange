@@ -17,16 +17,18 @@
                     <div class="card-body">
                         <div class="d-block text-center" style="margin-bottom: 50px;">
 
-                            <a href="{{ url('/cash-fund/create') }}" class="btn btn-success btn-sm" style="float: right !important;" title="Cash fund">
+                            <a href="{{ url('/cash-fund/create') }}" class="btn btn-success btn-sm"
+                               style="float: right !important;" title="Cash fund">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Enregistrer un fond de caisse
                             </a>
 
-                            <a href="{{ url('/cash-fund/create') }}" style="float: right !important; margin-right: 20px" class="btn btn-info btn-sm pull-right"  title="Deposit">
+                            <a href="{{ url('/cash-fund/deposit') }}" style="float: right !important; margin-right: 20px"
+                               class="btn btn-info btn-sm pull-right" title="Deposit">
                                 <i class="fa fa-ticket-alt" aria-hidden="true"></i> Dépot
                             </a>
                         </div>
 
-                        <div class="table-responsive" >
+                        <div class="table-responsive">
                             <table class="table table-bordered" id="myTable">
                                 <thead>
                                 <tr>
@@ -40,32 +42,40 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($cashFunds as $cashFund)
-                                        <tr>
-                                            <td class="text-center">{{ $cashFund->id }}</td>
-                                            <td class="text-center">{{ $cashFund->cashier->name }}</td>
-                                            <td class="text-center">{{ count($cashFund->funds) }}</td>
-                                            <td class="text-center">{{ $cashFund->admin->name }}</td>
-                                            <td class="text-center">{{ $cashFund->created_at }}</td>
-                                            <td class="text-center">
-                                                @if(!$cashFund->is_canceled)
-                                                    <span class="fa fa-check-circle text-success text-center"></span>
-                                                @else
-                                                    <span class="fa fa-times-circle text-danger text-center"></span>
+                                @foreach($cashFunds as $cashFund)
+                                    <tr>
+                                        <td class="text-center">{{ $cashFund->id }}</td>
+                                        <td class="text-center">{{ $cashFund->cashier->name }}</td>
+                                        <td class="text-center">{{ count($cashFund->funds) }}</td>
+                                        <td class="text-center">{{ $cashFund->admin->name }}</td>
+                                        <td class="text-center">{{ $cashFund->created_at }}</td>
+                                        <td class="text-center">
+                                            @if(!$cashFund->is_canceled)
+                                                <span class="fa fa-check-circle text-success text-center"></span>
+                                            @else
+                                                <span class="fa fa-times-circle text-danger text-center"></span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('#') }}" class="btn btn-sm btn-primary mb-1"><i
+                                                        class="icon-eye"></i></a>
+                                            <a href="{{ url('/cash-fund/'.$cashFund->id.'/print') }}" class="btn btn-sm btn-info mb-1"><i
+                                                        class="icon-printer"></i></a>
+                                            @if(!$cashFund->is_canceled)
+                                                @if(!$cashFund->is_locked)
+                                                    <a href="{{ route('cash-fund.edit', $cashFund) }}"
+                                                       class="btn btn-sm btn-info mb-1"><i class="icon-pencil"></i></a>
                                                 @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ url('#') }}" class="btn btn-sm btn-primary mb-1"><i class="icon-eye"></i></a>
-                                                @if(!$cashFund->is_canceled)
-                                                    <a href="{{ route('cash-fund.edit', $cashFund) }}" class="btn btn-sm btn-info mb-1"><i class="icon-pencil"></i></a>
-                                                    <a href="{{ url('cash-fund/'.$cashFund->uid.'/cancel') }}" class="btn btn-sm btn-danger delete text-white mb-1" style="cursor:pointer;">
-                                                        <i class="fa fa-trash"></i>
-                                                    </a>
-                                                @endif
+                                                <a href="{{ url('cash-fund/'.$cashFund->uid.'/cancel') }}"
+                                                   class="btn btn-sm btn-danger delete text-white mb-1"
+                                                   style="cursor:pointer;">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            @endif
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -105,30 +115,30 @@
         {{--var route = '{{asset('currency/get-data')}}';--}}
 
         {{--$('#myTable').DataTable({--}}
-            {{--processing: true,--}}
-            {{--serverSide: true,--}}
-            {{--iDisplayLength: 10,--}}
-            {{--retrieve: true,--}}
-            {{--ajax: route,--}}
-            {{--columns: [--}}
-                    {{--{data: "DT_RowIndex", name: 'DT_RowIndex',width:'5%'},--}}
-                    {{--@foreach($columns as $column)--}}
-                    {{--{--}}
-                    {{--data: "{{$column}}", name: '{{$column}}'--}}
-                    {{--},--}}
-                    {{--@endforeach--}}
-                    {{--{--}}
-                    {{--data: "actions", name: "actions"--}}
-                    {{--}--}}
-                    {{--],--}}
-            {{--columns: [--}}
-                {{--{data: 'id', name: 'id'},--}}
-                {{--{data: 'Abbreviation', name: 'abbreviation'},--}}
-                {{--{data: 'sale_rate', name: 'sale_rate'},--}}
-                {{--{data: 'purchase_rate', name: 'purchase_rate'},--}}
-                {{--{data: 'date', name: 'date'},--}}
-                {{--{data: 'actions', name: 'actions'}--}}
-            {{--],--}}
+        {{--processing: true,--}}
+        {{--serverSide: true,--}}
+        {{--iDisplayLength: 10,--}}
+        {{--retrieve: true,--}}
+        {{--ajax: route,--}}
+        {{--columns: [--}}
+        {{--{data: "DT_RowIndex", name: 'DT_RowIndex',width:'5%'},--}}
+        {{--@foreach($columns as $column)--}}
+        {{--{--}}
+        {{--data: "{{$column}}", name: '{{$column}}'--}}
+        {{--},--}}
+        {{--@endforeach--}}
+        {{--{--}}
+        {{--data: "actions", name: "actions"--}}
+        {{--}--}}
+        {{--],--}}
+        {{--columns: [--}}
+        {{--{data: 'id', name: 'id'},--}}
+        {{--{data: 'Abbreviation', name: 'abbreviation'},--}}
+        {{--{data: 'sale_rate', name: 'sale_rate'},--}}
+        {{--{data: 'purchase_rate', name: 'purchase_rate'},--}}
+        {{--{data: 'date', name: 'date'},--}}
+        {{--{data: 'actions', name: 'actions'}--}}
+        {{--],--}}
 
         {{--});--}}
     </script>

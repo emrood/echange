@@ -49,10 +49,10 @@ class LoginController extends Controller
         if($user->isAdmin()){
             return redirect('dashboard');
         }else{
-
+//            return redirect('change');
         }
 
-        return redirect('/');
+        return redirect('change');
     }
 
     public function logout(Request $request)

@@ -485,9 +485,20 @@ Route::resource('currency', 'Currency\\CurrencyController');
 Route::get('history/get-data','RateHistory\\RateHistoryController@getData');
 Route::resource('history', 'RateHistory\\RateHistoryController');
 
+Route::get('/cash-fund/{id}/print',[
+    'uses' => 'CashFundController@print',
+    'as' => 'cash-fund.print'
+]);
+Route::post('cash-fund/deposit/save', 'CashFundController@savedeposit');
+Route::get('cash-fund/deposit', 'CashFundController@deposit');
 Route::get('cash-fund/{uid}/cancel', 'CashFundController@cancel');
 Route::get('cash-fund/{user_id}/balance', 'CashFundController@balance');
 Route::resource('cash-fund', 'CashFundController');
 Route::get('change/getrate', 'ChangeController@getratesale');
+Route::get('/change/{id}/print',[
+    'uses' => 'ChangeController@print',
+    'as' => 'change.print'
+]);
 Route::get('change/list', 'ChangeController@list');
+Route::get('change/{id}/cancel', 'ChangeController@cancel');
 Route::resource('change', 'ChangeController');

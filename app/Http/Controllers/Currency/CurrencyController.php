@@ -115,7 +115,7 @@ class CurrencyController extends Controller
 
         $rate_history = new RateHistory();
         $rate_history->user_id = Auth::user()->id;
-        $rate_history->currency_id= Currency::latest()->first()->id;
+        $rate_history->currency_id = Currency::latest()->first()->id;
         $rate_history->sale_rate = $requestData['sale_rate'];
         $rate_history->purchase_rate = $requestData['purchase_rate'];
         $rate_history->date = $requestData['date'];
@@ -181,7 +181,7 @@ class CurrencyController extends Controller
 
         $rate_history = new RateHistory();
         $rate_history->user_id = Auth::user()->id;
-        $rate_history->currency_id= Currency::latest()->first()->id;
+        $rate_history->currency_id= $id;
         $rate_history->sale_rate = $requestData['sale_rate'];
         $rate_history->purchase_rate = $requestData['purchase_rate'];
         $rate_history->date = $requestData['date'];
