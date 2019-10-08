@@ -28,10 +28,22 @@ class CashFundController extends Controller
     {
         //
 
-        if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+        if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
+
+            ini_set('memory_limit', '3096M');
+
+            $query_from_date = Carbon::today()->toDateString();
+            $query_to_date = Carbon::today()->toDateString();
+            $from_date = Carbon::today()->format('m/d/Y');
+            $to_date = Carbon::today()->format('m/d/Y');
+            $users = User::all();
+            $currencies = Currency::all();
+            $user_id = '*';
+            $currency_id = '*';
+
             $cashFunds = CashFund::whereDate('date', Carbon::today()->toDateString())->get();
 
-            return view('cash_fund.index', compact('cashFunds'));
+            return view('cash_fund.index', compact('cashFunds', 'user_id', 'currency_id', 'from_date', 'to_date', 'users', 'currencies'));
         }
 
         abort(401);
@@ -46,7 +58,7 @@ class CashFundController extends Controller
     public function create()
     {
         //
-        if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+        if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
 
             $currencies = Currency::all();
             $users = User::all();
@@ -74,9 +86,9 @@ class CashFundController extends Controller
             ]);
 
 //            dd($request->all());
-            $cashFund = CashFund::whereDate('date', Carbon::today()->toDateString())->where( 'cashier_id', $request->cashier_id)->first();
+            $cashFund = CashFund::whereDate('date', Carbon::today()->toDateString())->where('cashier_id', $request->cashier_id)->first();
 
-            if($cashFund == null){
+            if ($cashFund == null) {
                 $cashFund = new CashFund();
                 $cashFund->uid = md5(uniqid($request->cashier_id, true));
             }
@@ -91,7 +103,7 @@ class CashFundController extends Controller
                 foreach ($request->currency_amount as $id => $amount) {
 
                     $cashFundCurrency = CashFundCurrency::whereDate('date', Carbon::today()->toDateString())->where('currency_id', $id)->where('cash_fund_uid', $cashFund->uid)->first();
-                    if($cashFundCurrency == null){
+                    if ($cashFundCurrency == null) {
                         $cashFundCurrency = new CashFundCurrency();
                     }
 
@@ -112,11 +124,11 @@ class CashFundController extends Controller
                 }
 
 
-                if($request->has('print')){
+                if ($request->has('print')) {
                     //TODO PRINT RECEPIPT
                 }
 
-                return redirect('cash-fund')->with('message', 'Fond de caisse enregistré !');
+                return redirect('cash-fund')->with('message', 'Fond de caisse enregistré !')->with('cashFund', $cashFund);
             } else {
                 return redirect('cash-fund')->withErrors(['message' => 'impossible d\'enregistrer le fond de caisse']);
             }
@@ -152,16 +164,17 @@ class CashFundController extends Controller
     }
 
 
-    public function cancel($uid){
+    public function cancel($uid)
+    {
 
         $cashFund = CashFund::where('uid', $uid)->first();
 
-        if($cashFund && Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+        if ($cashFund && Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
             $cashFund->is_canceled = true;
             $cashFund->save();
 
             return redirect('cash-fund')->with('message', 'Fond de caisse annulé !');
-        }else{
+        } else {
             abort(404);
         }
     }
@@ -182,14 +195,14 @@ class CashFundController extends Controller
             'currency_amount' => 'required',
         ]);
 
-        if($cashFund && Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+        if ($cashFund && Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
             $cashFund->cashier_id = $request->cashier_id;
             $cashFund->admin_id = Auth::user()->id;
             $cashFund->save();
 
-            foreach ($request->currency_amount as $id => $amount){
+            foreach ($request->currency_amount as $id => $amount) {
                 $cashFundCurrency = CashFundCurrency::whereDate('date', $cashFund->date)->where('currency_id', $id)->where('cash_fund_uid', $cashFund->uid)->first();
-                if($cashFundCurrency == null){
+                if ($cashFundCurrency == null) {
                     $cashFundCurrency = new CashFundCurrency();
                 }
 
@@ -206,8 +219,8 @@ class CashFundController extends Controller
                 }
             }
 
-            return redirect('cash-fund')->with('message', 'Fond de caisse mis à jour !');
-        }else{
+            return redirect('cash-fund')->with('message', 'Fond de caisse mis à jour !')->with('cashFund', $cashFund);
+        } else {
             abort(404);
         }
     }
@@ -223,19 +236,20 @@ class CashFundController extends Controller
         //
     }
 
-    public function balance($user_id){
+    public function balance($user_id)
+    {
         $user = User::find($user_id);
-        if($user){
-            if($user->isAdmin()){
+        if ($user) {
+            if ($user->isAdmin()) {
                 $cashFuns = CashFund::whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->get();
                 $currencies = Currency::all();
                 $array_balance = array();
-                foreach ($currencies as $currency){
+                foreach ($currencies as $currency) {
                     $array_balance['utilisateur\devise'][$currency->id] = [$currency->abbreviation];
                 }
 
-                foreach ($cashFuns as $cashFun){
-                    foreach ($cashFun->funds as $fund){
+                foreach ($cashFuns as $cashFun) {
+                    foreach ($cashFun->funds as $fund) {
                         $array_balance[$cashFun->cashier->name][$fund->currency->id] = [$fund->amount];
                     }
                 }
@@ -248,7 +262,8 @@ class CashFundController extends Controller
     }
 
 
-    public function savedeposit(Request $request){
+    public function savedeposit(Request $request)
+    {
 
         $request->validate([
             'cashier_id' => 'required',
@@ -257,7 +272,7 @@ class CashFundController extends Controller
 
         $cashFund = CashFund::where('cashier_id', $request->cashier_id)->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->first();
 
-        if($cashFund && Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+        if ($cashFund && Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
 
             $deposit = new Deposit();
             $deposit->admin_id = Auth::user()->id;
@@ -266,9 +281,9 @@ class CashFundController extends Controller
             $deposit->uid = md5(uniqid($request->cashier_id, true));
             $deposit->save();
 
-            foreach ($request->currency_amount as $id => $amount){
+            foreach ($request->currency_amount as $id => $amount) {
                 $cashFundCurrency = CashFundCurrency::whereDate('date', $cashFund->date)->where('currency_id', $id)->where('cash_fund_uid', $cashFund->uid)->first();
-                if($cashFundCurrency != null){
+                if ($cashFundCurrency != null) {
                     $cashFundCurrency->amount += $amount;
                     $cashFundCurrency->save();
 
@@ -282,14 +297,15 @@ class CashFundController extends Controller
                 }
             }
 
-            return redirect('cash-fund')->with('message', 'Dépot effectué !');
-        }else{
+            return redirect('cash-fund')->with('message', 'Dépot effectué !')->with('deposit', $deposit);
+        } else {
             abort(404);
         }
     }
 
-    public function deposit(){
-        if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+    public function deposit()
+    {
+        if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
 
             $currencies = Currency::all();
             $users = User::all();
@@ -300,16 +316,29 @@ class CashFundController extends Controller
         abort(401);
     }
 
-    public function print($id){
+    public function print($id)
+    {
         $cashFund = CashFund::find($id);
 
-        if($cashFund){
-            $pdf = PDF::loadView('cash_fund.print', compact('cashFund'));
-            return $pdf->download('Fond de caisse - '.$cashFund->created_at.'.pdf');
+        if ($cashFund) {
 
-//            $pdf = SnappyPdf::loadView('change.print', compact('change'));
-//            return $pdf->download('operation de change_'.$change->created_at.'.pdf');
-////            return view('change.print', compact('change'));
+            $pdf = PDF::loadView('cash_fund.thermalprint', compact('cashFund'));
+            return $pdf->download('Fond de caisse - ' . $cashFund->created_at . '.pdf');
+
+        }
+
+        abort(404);
+    }
+
+    public function printdeposit($id)
+    {
+        $deposit = Deposit::find($id);
+
+        if ($deposit) {
+            return view('cash_fund.thermaldeposit', compact('deposit'));
+
+            $pdf = PDF::loadView('cash_fund.thermaldeposit', compact('deposit'));
+            return $pdf->download('depot de caisse - ' . $cashFund->created_at . '.pdf');
         }
 
         abort(404);

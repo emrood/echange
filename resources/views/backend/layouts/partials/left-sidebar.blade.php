@@ -27,7 +27,7 @@
                     <li class="sidebar-item">
                         <a href="{{asset('cash-fund')}}" class="sidebar-link">
                             <i data-feather="trello" class="mr-2"></i>
-                            <span class="hide-menu"> Fond de caisse </span>
+                            <span class="hide-menu"> Gestion de caisse </span>
                         </a>
                     </li>
                 @endif

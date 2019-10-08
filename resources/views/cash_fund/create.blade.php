@@ -62,10 +62,10 @@
                             </div>
                         @endforeach
 
-                        <div class="form-group">
-                            {!! Form::label('Imprimer', 'Imprimer', ['class' => 'control-label pull-right']) !!}
-                            {!! Form::checkbox('print', true) !!}
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label('Imprimer', 'Imprimer', ['class' => 'control-label pull-right']) !!}--}}
+                            {{--{!! Form::checkbox('print', true) !!}--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back">

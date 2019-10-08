@@ -51,7 +51,6 @@ setlocale(LC_TIME, "fr_FR");
                 <td style="text-align:center;vertical-align:middle;width: 50%;"> {{ $fund->amount }}</td>
             </tr>
         @endforeach
-
         </tbody>
         <tfoot>
         </tfoot>

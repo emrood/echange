@@ -1,32 +1,112 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Fond de caisse | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Gestion de caisse | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs',['current' => 'Fond de caisse'])
+    @include('backend.layouts.partials.breadcrumbs',['current' => 'Gestion de caisse'])
 @endsection
 
 @push('before-css')
     <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
 @endpush
 
+
 @section('content')
     <div class="container-fluid">
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-block text-center" style="margin-bottom: 50px;">
-
+                        <div class="d-block text-center" style="margin-bottom: 50px; font-size: 1.2em !important;">
                             <a href="{{ url('/cash-fund/create') }}" class="btn btn-success btn-sm"
-                               style="float: right !important;" title="Cash fund">
+                               style=" margin-right: 20px; font-size: 0.9em !important;" title="Cash fund">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Enregistrer un fond de caisse
                             </a>
 
-                            <a href="{{ url('/cash-fund/deposit') }}" style="float: right !important; margin-right: 20px"
-                               class="btn btn-info btn-sm pull-right" title="Deposit">
-                                <i class="fa fa-ticket-alt" aria-hidden="true"></i> Dépot
+                            <a href="{{ url('/cash-fund/deposit') }}" style="margin-right: 20px; font-size: 0.9em !important;"
+                               class="btn btn-danger btn-sm" title="Withdrawal">
+                                <i class="fa fa-arrow-up" aria-hidden="true"></i> Retrait
                             </a>
+
+                            <a href="{{ url('/cash-fund/deposit') }}" style=" margin-right: 20px; font-size: 0.9em !important;"
+                               class="btn btn-info btn-sm" title="Deposit">
+                                <i class="fa fa-arrow-down" aria-hidden="true"></i> Dépot
+                            </a>
+
+                            <hr/>
                         </div>
+
+                        <form method="get">
+                            <div class="container-ui" style="margin-top: -40px;">
+                                <div class="row pt-3">
+                                    <div class="col-md-4" style="margin: auto;">
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-5">Utilisateur</label>
+                                            <div class="input-group my-3">
+                                                <select name="user_id" class="form-control custom-select">
+                                                    <option {{ ($user_id == '*') ? 'selected' : '' }} value="*">Tous
+                                                    </option>
+                                                    @foreach($users as $u)
+                                                        <option value="{{ $u->id }}" {{ ($user_id == $u->id) ? 'selected' : '' }}>{{ $u->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{--<div class="col-md-3" style="margin: auto;">--}}
+                                        {{--<div class="form-group row">--}}
+                                            {{--<label class="control-label col-md-5">Devise</label>--}}
+                                            {{--<div class="input-group my-3">--}}
+                                                {{--<select name="currency_id" class="form-control custom-select">--}}
+                                                    {{--<option {{ ($currency_id == '*') ? 'selected' : '' }} value="*">Tous--}}
+                                                    {{--</option>--}}
+                                                    {{--@foreach($currencies->where('is_reference', false) as $currency)--}}
+                                                        {{--<option {{ ($currency_id == $currency->id) ? 'selected' : '' }} value="{{$currency->id}}">{{ $currency->abbreviation }}</option>--}}
+                                                    {{--@endforeach--}}
+
+                                                {{--</select>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+
+                                    <div class="col-md-4" style="margin: auto;">
+                                        <div class="form-group row">
+                                            <label class="control-label">Période</label>
+                                            <div class="input-daterange input-group my-3" id="date-range">
+                                                <input type="text" class="form-control" value="{{ $from_date  }}"
+                                                       name="start"/>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text bg-info b-0 text-white">Au</span>
+                                                </div>
+                                                <input type="text" class="form-control" value="{{ $to_date }}"
+                                                       name="end"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+
+                                    <div class="col-md-2">
+                                        <label class="control-label">  </label>
+                                        <div class="input-group my-3">
+                                            <input type="submit" class="btn btn-info" value="Rechercher" style="margin-top: 8px;"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Fonds de caisse </h4>
 
                         <div class="table-responsive">
                             <table class="table table-bordered" id="myTable">
@@ -102,45 +182,21 @@
     <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
     <script src="{{asset('dist/js/pages/datatable/datatable-basic.init.js')}}"></script>
     <script>
-        // $(document).on('click', '.delete', function (e) {
-        //     if (confirm('Are you sure want to delete?')) {
-        //         $(this).find('form').submit();
-        //     } else {
-        //         e.preventDefault();
-        //         return false;
-        //     }
-        // });
 
         $('#myTable').DataTable();
-        {{--var route = '{{asset('currency/get-data')}}';--}}
 
-        {{--$('#myTable').DataTable({--}}
-        {{--processing: true,--}}
-        {{--serverSide: true,--}}
-        {{--iDisplayLength: 10,--}}
-        {{--retrieve: true,--}}
-        {{--ajax: route,--}}
-        {{--columns: [--}}
-        {{--{data: "DT_RowIndex", name: 'DT_RowIndex',width:'5%'},--}}
-        {{--@foreach($columns as $column)--}}
-        {{--{--}}
-        {{--data: "{{$column}}", name: '{{$column}}'--}}
-        {{--},--}}
-        {{--@endforeach--}}
-        {{--{--}}
-        {{--data: "actions", name: "actions"--}}
-        {{--}--}}
-        {{--],--}}
-        {{--columns: [--}}
-        {{--{data: 'id', name: 'id'},--}}
-        {{--{data: 'Abbreviation', name: 'abbreviation'},--}}
-        {{--{data: 'sale_rate', name: 'sale_rate'},--}}
-        {{--{data: 'purchase_rate', name: 'purchase_rate'},--}}
-        {{--{data: 'date', name: 'date'},--}}
-        {{--{data: 'actions', name: 'actions'}--}}
-        {{--],--}}
-
-        {{--});--}}
+        (function() {
+            var id = "{!! (Session::has('cashFund'))? Session::get('cashFund')->id : 0 !!}";
+            var deposit_id = "{!! (Session::has('deposit'))? Session::get('deposit')->id : 0 !!}";
+            console.log(deposit_id);
+            if(id != 0){
+                window.open('/cash-fund/' + id + '/print', '_blank');
+            }else{
+                if(deposit_id != 0){
+                    window.open('/cash-fund/' + deposit_id + '/deposit/print', '_blank');
+                }
+            }
+        })();
     </script>
 
 @endpush

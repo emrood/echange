@@ -489,6 +489,12 @@ Route::get('/cash-fund/{id}/print',[
     'uses' => 'CashFundController@print',
     'as' => 'cash-fund.print'
 ]);
+
+Route::get('/cash-fund/{id}/deposit/print',[
+    'uses' => 'CashFundController@printdeposit',
+    'as' => 'cash-fund.printdeposit'
+]);
+
 Route::post('cash-fund/deposit/save', 'CashFundController@savedeposit');
 Route::get('cash-fund/deposit', 'CashFundController@deposit');
 Route::get('cash-fund/{uid}/cancel', 'CashFundController@cancel');

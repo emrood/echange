@@ -20,7 +20,7 @@
                     <div class="col-12">
                         <form class="form-horizontal mt-3" method="POST" action="{{ route('login') }}" id="loginform">
                             @csrf
-                            <div class="input-group mb-3">
+                            <div class="input-+group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
                                 </div>

@@ -19,7 +19,7 @@
         @if($cashFund != null)
             <div class="row">
                 <!-- If user has starting fund-->
-                <div class="col-md-8 center-block" style="margin-left: auto; margin-right: auto">
+                <div class="col-md-5 center-block" style="margin-left: auto; margin-right: auto">
                     <div class="card">
                         <div class="card-body">
                             @if ($errors->any())
@@ -41,7 +41,7 @@
                             <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
                                 <div>
                                     <div class="input-group">
-                                        <input type="number" step="0.0" min="0.0" value="0.0" class="form-control"
+                                        <input type="number" step="0.01" min="0" value="0.00" class="form-control"
                                                placeholder="" aria-label=""
                                                aria-describedby="basic-addon1"
                                                name="change_amount" id="input_received">
@@ -72,10 +72,10 @@
                                 {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
                             </div>
 
-                            <div class="form-group">
-                                {!! Form::label('Imprimer', 'Imprimer', ['class' => 'control-label pull-right']) !!}
-                                {!! Form::checkbox('print', true) !!}
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('Imprimer', 'Imprimer', ['class' => 'control-label pull-right']) !!}--}}
+                                {{--{!! Form::checkbox('print', true) !!}--}}
+                            {{--</div>--}}
 
                             <div class="form-group text-center">
                                 {!! Form::submit('Enregistrer', ['class' => 'btn btn-danger btn-md pull-right']) !!}
@@ -94,8 +94,23 @@
             <h2 class="text-center">Aucun fond de caisse enregistré</h2>
         @endif
     </div>
+
+
 @endsection
 @push('js')
     <script src="{{ asset('js/change.js') }}"></script>
+    <script>
+        (function() {
+            var id = "{!! (Session::has('change'))? Session::get('change')->id : 0 !!}";
+            // console.log(id);
+            if(id != 0){
+                window.open('/change/' + id + '/print', '_blank');
+            }
+        })();
+    </script>
 @endpush
+
+
+
+
 

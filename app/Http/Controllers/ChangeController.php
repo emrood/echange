@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Barryvdh\Snappy\Facades\SnappyPdf;
-
+use Illuminate\Support\Facades\Storage;
 
 
 class ChangeController extends Controller
@@ -27,6 +27,8 @@ class ChangeController extends Controller
     public function index()
     {
         //
+
+//        dd('Here');
         if (Auth::check()) {
 
             ini_set('memory_limit', '3096M');
@@ -123,8 +125,6 @@ class ChangeController extends Controller
 //        dd($request->all());
         if (Auth::check()) {
             ini_set('memory_limit', '3096M');
-
-
             $cashFund = Auth::user()->funds()->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->first();
             if($cashFund != null){
                 $currency = Currency::find($request->change_type);
@@ -156,11 +156,15 @@ class ChangeController extends Controller
                             $deposit->save();
                         }
 
-                        if($request->has('print')){
-                          //TODO PRINT TICKET
-                        }
+//                        if($request->has('print')){
+//                          //TODO PRINT TICKET
+//                            $pdf = PDF::loadView('change.print', compact('change'));
+////                            Storage::put('public\pdf\operation de change - '.$change->created_at.'.pdf', $pdf->output());
+////                            Storage::disk('local')->put('public\pdf\operation de change - '.$change->created_at.'.pdf', $pdf->output());
+//                            $pdf->save('operation de change - '.$change->created_at.'.pdf');
+//                        }
 //                        Session::flash('message','Transaction enregistrée avec succès!');
-                        return redirect()->back()->with('message','Transaction enregistrée avec succès !');;
+                        return redirect()->back()->with('message','Transaction enregistrée avec succès !')->with('change', $change);
                     }else{
                         abort(500);
                     }
@@ -256,19 +260,12 @@ class ChangeController extends Controller
 
 
     public function print($id){
-
         $change = Change::find($id);
 
         if($change){
-
-            $pdf = PDF::loadView('change.print', compact('change'));
+            $pdf = PDF::loadView('change.thermalprint', compact('change'));
             return $pdf->download('operation de change - '.$change->created_at.'.pdf');
-
-//            $pdf = SnappyPdf::loadView('change.print', compact('change'));
-//            return $pdf->download('operation de change_'.$change->created_at.'.pdf');
-////            return view('change.print', compact('change'));
         }
-
         abort(404);
     }
 }
