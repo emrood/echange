@@ -490,6 +490,7 @@ Route::get('/cash-fund/{id}/print',[
     'as' => 'cash-fund.print'
 ]);
 
+//Depot
 Route::get('/cash-fund/{id}/deposit/print',[
     'uses' => 'CashFundController@printdeposit',
     'as' => 'cash-fund.printdeposit'
@@ -497,6 +498,20 @@ Route::get('/cash-fund/{id}/deposit/print',[
 
 Route::post('cash-fund/deposit/save', 'CashFundController@savedeposit');
 Route::get('cash-fund/deposit', 'CashFundController@deposit');
+Route::get('cash-fund/{uid}/cancel/deposit', 'CashFundController@cancelDeposit');
+
+
+// Retrait
+Route::get('/cash-fund/{id}/withdrawal/print',[
+    'uses' => 'CashFundController@printwithdrawal',
+    'as' => 'cash-fund.printdeposit'
+]);
+Route::post('cash-fund/withdrawal/save', 'CashFundController@savewithdrawal');
+Route::get('cash-fund/withdrawal', 'CashFundController@withdrawal');
+Route::get('cash-fund/{uid}/cancel/withdrawal', 'CashFundController@cancelWithdrawal');
+
+
+//Fond de caisse
 Route::get('cash-fund/{uid}/cancel', 'CashFundController@cancel');
 Route::get('cash-fund/{user_id}/balance', 'CashFundController@balance');
 Route::resource('cash-fund', 'CashFundController');

@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
-@section('title') {{ 'Enregister un fond de caisse | '.env('APP_NAME') }} @endsection
+@section('title') {{ 'Effecté un retrait | '.env('APP_NAME') }} @endsection
 
 @section('breadcrumbs')
-    @include('backend.layouts.partials.breadcrumbs', ['current' => 'Enregister un fond de caisse'])
+    @include('backend.layouts.partials.breadcrumbs', ['current' => 'Effecté un retrait'])
 @endsection
 
 @push('before-css')
@@ -23,6 +23,7 @@
             $user_array[$user->id] = $user->name;
         }
     }
+
 @endphp
 
 @section('content')
@@ -39,7 +40,7 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => '/cash-fund', 'class' => 'form-horizontal', 'files' => true]) !!}
+                        {!! Form::open(['url' => '/cash-fund/withdrawal/save', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                         <div class="form-group {{ $errors->has('cashier_id') ? 'has-error' : ''}}">
                             {!! Form::label('Caissier', 'Caissier', ['class' => 'control-label']) !!}
@@ -75,8 +76,8 @@
                         {{--</div>--}}
 
                         <div class="form-group">
-                            <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" class="btn btn-dark btn-sm mr-5" title="Back">
-                               <i class="fa fa-arrow-left" aria-hidden="true"></i> Retour
+                            <a href="{{ url('/cash-fund') }}" class="btn btn-dark btn-sm mr-5" title="Back">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i> Retour
                             </a>
                             {!! Form::submit('Enregistrer', ['class' => 'btn btn-info btn-sm pull-right']) !!}
                         </div>

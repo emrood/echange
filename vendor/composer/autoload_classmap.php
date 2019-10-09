@@ -54,6 +54,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Resources\\CurrencyResource' => $baseDir . '/app/Http/Resources/CurrencyResource.php',
     'App\\Http\\Resources\\CurrencyResources' => $baseDir . '/app/Http/Resources/CurrencyResources.php',
+    'App\\Jobs\\PrintChange' => $baseDir . '/app/Jobs/PrintChange.php',
     'App\\Page' => $baseDir . '/app/Page.php',
     'App\\Permission' => $baseDir . '/app/Permission.php',
     'App\\Profile' => $baseDir . '/app/Profile.php',

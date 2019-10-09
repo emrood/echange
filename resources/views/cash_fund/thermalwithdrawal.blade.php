@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Fond de caisse #{{ $cashFund->id }}</title>
+    <title>Retrait #{{ $withdrawal->id }}</title>
     {{--<link rel="stylesheet" href="{{ URL::to('css/print/paper.min.css') }}">--}}
     {{--<link href="{{ URL::to('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">--}}
 
@@ -21,20 +21,20 @@ setlocale(LC_TIME, "fr_FR");
 
     </div>
     <div class="tickets_container">
-        <h4 style="margin-left: 80px;">Fond de caisse</h4>
+        <h4 style="margin-left: 80px;">Retrait de caisse @if($withdrawal->is_canceled) (Annulé) @endif</h4>
         <div class="tickets page-break">
             <div class="row">
                 <div class="info_container">
                     <div class="titles">Date</div>
-                    <div class="data">: {{  $cashFund->created_at  }}</div>
+                    <div class="data">: {{  $withdrawal->created_at  }}</div>
                 </div>
                 <div class="info_container">
                     <div class="titles">Superviseur</div>
-                    <div class="data">: {{ $cashFund->admin->name }}</div>
+                    <div class="data">: {{ $withdrawal->admin->name }}</div>
                 </div>
                 <div class="info_container">
                     <div class="titles">Caissier</div>
-                    <div class="data">: {{ $cashFund->cashier->name }}</div>
+                    <div class="data">: {{ $withdrawal->cashier->name }}</div>
                 </div>
             </div>
             <br/>
@@ -46,7 +46,7 @@ setlocale(LC_TIME, "fr_FR");
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($cashFund->funds as $fund)
+                @foreach($withdrawal->withdrawals as $fund)
                     <tr>
                         <td style="text-align:center;vertical-align:middle;width:80px"> {{ $fund->currency->abbreviation }}</td>
                         <td style="text-align:center;vertical-align:middle;width:80px"> {{ number_format($fund->amount, 2, '.', ',') }}</td>

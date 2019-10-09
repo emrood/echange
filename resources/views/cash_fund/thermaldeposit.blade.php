@@ -21,7 +21,7 @@ setlocale(LC_TIME, "fr_FR");
 
     </div>
     <div class="tickets_container">
-        <h4 style="margin-left: 80px;">Dépot de caisse</h4>
+        <h4 style="margin-left: 80px;">Dépot de caisse @if($deposit->is_canceled) (Annulé) @endif</h4>
         <div class="tickets page-break">
             <div class="row">
                 <div class="info_container">
@@ -60,7 +60,7 @@ setlocale(LC_TIME, "fr_FR");
 
         <div>
             <h4 style="display: block;">__________________________________</h4>
-            <h6 style="margin-left: 80px; margin-top: -20px; display: block;">Signature du du superviseur</h6>
+            <h6 style="margin-left: 80px; margin-top: -20px; display: block;">Signature du superviseur</h6>
         </div>
 
     </div>

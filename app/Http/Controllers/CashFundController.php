@@ -8,6 +8,8 @@ use App\Currency;
 use App\Deposit;
 use App\DepositCurrency;
 use App\User;
+use App\Withdrawal;
+use App\WithdrawalCurrency;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -24,7 +26,7 @@ class CashFundController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
 
@@ -41,9 +43,34 @@ class CashFundController extends Controller
             $user_id = '*';
             $currency_id = '*';
 
-            $cashFunds = CashFund::whereDate('date', Carbon::today()->toDateString())->get();
+            $cashFunds = CashFund::orderBy('created_at', 'desc');
+            $deposits = Deposit::orderBy('created_at', 'desc');
+            $withdrawals = Withdrawal::orderBy('created_at', 'desc');
 
-            return view('cash_fund.index', compact('cashFunds', 'user_id', 'currency_id', 'from_date', 'to_date', 'users', 'currencies'));
+            if(!empty($request->all())){
+                $user_id = $request->user_id;
+//                $currency_id = $request->currency_id;
+                $from_date = $request->start;
+                $to_date= $request->end;
+                $query_from_date = Carbon::createFromFormat('m/d/Y', $from_date)->toDateString();
+                $query_to_date = Carbon::createFromFormat('m/d/Y', $to_date)->toDateString();
+            }
+
+            $cashFunds = $cashFunds->whereDate('date', '>=' ,$query_from_date)->whereDate('date', '<=' ,$query_to_date);
+            $deposits = $deposits->whereDate('date', '>=' ,$query_from_date)->whereDate('date', '<=' ,$query_to_date);
+            $withdrawals= $withdrawals->whereDate('date', '>=' ,$query_from_date)->whereDate('date', '<=' ,$query_to_date);
+
+            if($user_id != '*'){
+                $cashFunds = $cashFunds->where('cashier_id', (int) $user_id);
+                $deposits = $deposits->where('cashier_id', (int) $user_id);
+                $withdrawals = $withdrawals->where('cashier_id', (int) $user_id);
+            }
+
+            $cashFunds = $cashFunds->get();
+            $deposits = $deposits->get();
+            $withdrawals = $withdrawals->get();
+
+            return view('cash_fund.index', compact('cashFunds', 'deposits', 'withdrawals', 'user_id', 'currency_id', 'from_date', 'to_date', 'users', 'currencies'));
         }
 
         abort(401);
@@ -316,6 +343,60 @@ class CashFundController extends Controller
         abort(401);
     }
 
+    public function withdrawal()
+    {
+        if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
+
+            $currencies = Currency::all();
+            $users = User::all();
+
+            return view('cash_fund.withdrawal', compact('currencies', 'users'));
+        }
+
+        abort(401);
+    }
+
+    public function savewithdrawal(Request $request)
+    {
+
+        $request->validate([
+            'cashier_id' => 'required',
+            'currency_amount' => 'required',
+        ]);
+
+        $cashFund = CashFund::where('cashier_id', $request->cashier_id)->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->first();
+
+        if ($cashFund && Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
+
+            $withdrawal = new Withdrawal();
+            $withdrawal->admin_id = Auth::user()->id;
+            $withdrawal->cashier_id = $request->cashier_id;
+            $withdrawal->date = $cashFund->date;
+            $withdrawal->uid = md5(uniqid($request->cashier_id, true));
+            $withdrawal->save();
+
+            foreach ($request->currency_amount as $id => $amount) {
+                $cashFundCurrency = CashFundCurrency::whereDate('date', $cashFund->date)->where('currency_id', $id)->where('cash_fund_uid', $cashFund->uid)->first();
+                if ($cashFundCurrency != null) {
+                    $cashFundCurrency->amount -= $amount;
+                    $cashFundCurrency->save();
+
+                    $withdrawalCurrency = new WithdrawalCurrency();
+                    $withdrawalCurrency->currency_id = $id;
+                    $withdrawalCurrency->amount = $amount;
+                    $withdrawalCurrency->date = $cashFundCurrency->date;
+                    $withdrawalCurrency->withdrawal_id = $withdrawal->id;
+                    $withdrawalCurrency->withdrawal_uid = $withdrawal->uid;
+                    $withdrawalCurrency->save();
+                }
+            }
+
+            return redirect('cash-fund')->with('message', 'Retrait effectué !')->with('withdrawal', $withdrawal);
+        } else {
+            abort(404);
+        }
+    }
+
     public function print($id)
     {
         $cashFund = CashFund::find($id);
@@ -323,8 +404,8 @@ class CashFundController extends Controller
         if ($cashFund) {
 
             $pdf = PDF::loadView('cash_fund.thermalprint', compact('cashFund'));
-            return $pdf->download('Fond de caisse - ' . $cashFund->created_at . '.pdf');
-
+//            return $pdf->download('Fond de caisse - ' . $cashFund->created_at . '.pdf');
+            return $pdf->stream('Fond de caisse - ' . $cashFund->created_at . '.pdf');
         }
 
         abort(404);
@@ -335,10 +416,77 @@ class CashFundController extends Controller
         $deposit = Deposit::find($id);
 
         if ($deposit) {
-            return view('cash_fund.thermaldeposit', compact('deposit'));
-
+//            return view('cash_fund.thermaldeposit', compact('deposit'));
             $pdf = PDF::loadView('cash_fund.thermaldeposit', compact('deposit'));
-            return $pdf->download('depot de caisse - ' . $cashFund->created_at . '.pdf');
+//            return $pdf->download('depot de caisse - ' . $cashFund->created_at . '.pdf');
+            return $pdf->stream('depot de caisse - ' . $deposit->created_at . '.pdf');
+
+        }
+
+        abort(404);
+    }
+
+    public function printwithdrawal($id)
+    {
+        $withdrawal = Withdrawal::find($id);
+
+        if ($withdrawal) {
+//            return view('cash_fund.thermaldeposit', compact('deposit'));
+            $pdf = PDF::loadView('cash_fund.thermalwithdrawal', compact('withdrawal'));
+//            return $pdf->download('depot de caisse - ' . $cashFund->created_at . '.pdf');
+            return $pdf->stream('depot de caisse - ' . $withdrawal->created_at . '.pdf');
+
+        }
+
+        abort(404);
+    }
+
+
+    public function cancelWithdrawal($uid){
+
+        $withdrawal = Withdrawal::where('uid', $uid)->first();
+
+        if($withdrawal && Auth::check() && Auth::user()->isAdmin()){
+            $cashFund = CashFund::where('cashier_id', $withdrawal->cashier_id)->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->first();
+            if($cashFund){
+                foreach ($withdrawal->withdrawals as $fund){
+                    $cashFundCurrency = CashFundCurrency::whereDate('date', $cashFund->date)->where('currency_id', $fund->currency_id)->where('cash_fund_uid', $cashFund->uid)->first();
+                    if ($cashFundCurrency != null) {
+                        $cashFundCurrency->amount += $fund->amount;
+                        $cashFundCurrency->save();
+                    }
+                }
+
+                $withdrawal->is_canceled = true;
+                $withdrawal->save();
+
+                return redirect()->back()->with('message', 'Retrait annulé');
+            }
+        }
+
+        abort(404);
+    }
+
+
+    public function cancelDeposit($uid){
+
+        $deposit = Deposit::where('uid', $uid)->first();
+        if($deposit && Auth::check() && Auth::user()->isAdmin()){
+            $cashFund = CashFund::where('cashier_id', $deposit->cashier_id)->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->first();
+            if($cashFund){
+                foreach ($deposit->deposits as $fund){
+                    $cashFundCurrency = CashFundCurrency::whereDate('date', $cashFund->date)->where('currency_id', $fund->currency_id)->where('cash_fund_uid', $cashFund->uid)->first();
+
+                    if ($cashFundCurrency != null) {
+                        $cashFundCurrency->amount -= $fund->amount;
+                        $cashFundCurrency->save();
+                    }
+                }
+
+                $deposit->is_canceled = true;
+                $deposit->save();
+                return redirect()->back()->with('message', 'Dépot annulé');
+            }
         }
 
         abort(404);

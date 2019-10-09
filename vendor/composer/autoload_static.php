@@ -556,6 +556,7 @@ class ComposerStaticInitb1e11dfb0019110a9c54ce195c134361
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Resources\\CurrencyResource' => __DIR__ . '/../..' . '/app/Http/Resources/CurrencyResource.php',
         'App\\Http\\Resources\\CurrencyResources' => __DIR__ . '/../..' . '/app/Http/Resources/CurrencyResources.php',
+        'App\\Jobs\\PrintChange' => __DIR__ . '/../..' . '/app/Jobs/PrintChange.php',
         'App\\Page' => __DIR__ . '/../..' . '/app/Page.php',
         'App\\Permission' => __DIR__ . '/../..' . '/app/Permission.php',
         'App\\Profile' => __DIR__ . '/../..' . '/app/Profile.php',

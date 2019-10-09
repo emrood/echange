@@ -13,8 +13,15 @@
     setlocale(LC_TIME, "fr_FR");
 
     $user_array = array();
-    foreach ($users as $user){
-        $user_array[$user->id] = $user->name;
+
+    if(Auth::user()->isAdmin()){
+        foreach ($users as $user){
+            $user_array[$user->id] = $user->name;
+        }
+    }else{
+        foreach ($users->where('id', '!=', Auth::user()->id) as $user){
+            $user_array[$user->id] = $user->name;
+        }
     }
 @endphp
 
@@ -62,16 +69,14 @@
                             </div>
                         @endforeach
 
-                        <div class="form-group">
-                            {!! Form::label('Imprimer', 'Imprimer', ['class' => 'control-label pull-right']) !!}
-                            {!! Form::checkbox('print', true) !!}
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label('Imprimer', 'Imprimer', ['class' => 'control-label pull-right']) !!}--}}
+                            {{--{!! Form::checkbox('print', true) !!}--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
-                            <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back">
-                                <button class="btn btn-dark btn-sm mr-5"><i class="fa fa-arrow-left"
-                                                                            aria-hidden="true"></i> Retour
-                                </button>
+                            <a href="{{ url('/cash-fund') }}" class="btn btn-dark btn-sm mr-5" title="Back">
+                               <i class="fa fa-arrow-left" aria-hidden="true"></i> Retour
                             </a>
                             {!! Form::submit('Enregistrer', ['class' => 'btn btn-info btn-sm pull-right']) !!}
                         </div>

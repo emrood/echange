@@ -264,7 +264,9 @@ class ChangeController extends Controller
 
         if($change){
             $pdf = PDF::loadView('change.thermalprint', compact('change'));
-            return $pdf->download('operation de change - '.$change->created_at.'.pdf');
+//            return $pdf->download('operation de change - '.$change->created_at.'.pdf');
+            return $pdf->stream('operation de change - '.$change->created_at.'.pdf');
+
         }
         abort(404);
     }
