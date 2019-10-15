@@ -2,7 +2,7 @@ $('.link-to-balance').on('click', function () {
     // alert(this);
     var userid = $(this).attr('data-userId');
     // console.log(userid);
-    var route = window.location.origin + '/cash-fund/' + userid + '/balance';
+    var route = window.location.origin + '/public/cash-fund/' + userid + '/balance';
     var table = '';
 
 
@@ -58,7 +58,7 @@ $('.link-to-balance').on('click', function () {
 });
 
 $('.link-to-rate').on('click', function () {
-    var route = window.location.origin + '/change/getrate';
+    var route = window.location.origin + '/public/change/getrate';
     var table = '';
 
     $.get(route, function (data, status) {
