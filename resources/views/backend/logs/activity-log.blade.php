@@ -58,7 +58,7 @@
                 "order": [[3, "desc"]],
                 processing: true,
                 serverSide: true,
-                ajax: '/activity-log/data',
+                ajax: '/public/activity-log/data',
                 columns: [
                     {data: 'causer_id', name: 'causer_id'},
                     {data: 'log_name', name: 'log_name'},

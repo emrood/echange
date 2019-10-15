@@ -22,7 +22,7 @@ $('#input_received').on('change, mouseup, keyup', function() {
 
 function calculateToGive() {
     //Calculate money to give
-    var route = window.location.origin + '/change/getrate';
+    var route = window.location.origin + '/public/change/getrate';
     var currencie = Number($('#input_change_type').val());
     var input_received = Number($('#input_received').val()) != null ?  Number($('#input_received').val()) : 0;
 
