@@ -31,7 +31,7 @@
 
                             <a href="{{ url('/cash-fund/deposit') }}"
                                style=" margin-right: 20px; font-size: 0.9em !important;"
-                               class="btn btn-info btn-sm" title="Deposit">
+                               class="btn btn-danger btn-sm" title="Deposit">
                                 <i class="fa fa-arrow-down" aria-hidden="true"></i> Dépot
                             </a>
 
@@ -487,15 +487,15 @@
             var withdrawal_id = "{!! (Session::has('withdrawal'))? Session::get('withdrawal')->id : 0 !!}";
             console.log(deposit_id);
             if (id != 0) {
-                window.open('/cash-fund/' + id + '/print', '_blank');
+                window.open('/public/cash-fund/' + id + '/print', '_blank');
             }
 
             if (deposit_id != 0) {
-                window.open('/cash-fund/' + deposit_id + '/deposit/print', '_blank');
+                window.open('/public/cash-fund/' + deposit_id + '/deposit/print', '_blank');
             }
 
             if (withdrawal_id != 0) {
-                window.open('/cash-fund/' + withdrawal_id + '/withdrawal/print', '_blank');
+                window.open('/public/cash-fund/' + withdrawal_id + '/withdrawal/print', '_blank');
             }
         })();
     </script>

@@ -72,44 +72,68 @@ $(function () {
 	// ==============================================================
 	// campaign
 	// ==============================================================
+	loadchart(null);
 
-	var chart = c3.generate({
-		bindto: '#campaign',
-		data: {
-			columns: [
-				['Vermont', 25],
-				['Arizona', 20],
-				['New York', 10],
-				['Washington', 15],
-				['Illinois', 15],
-				['Nevada', 15]
-			],
 
-			type: 'donut',
-			tooltip: {
-				show: true
-			}
-		},
-		donut: {
-			label: {
-				show: false
-			},
-			title: 5400,
-			width: 45
-		},
+	$('.donut_date').on('change', function () {
+		console.log($('.donut_date').val());
+		var date = $('.donut_date').val();
+        $('.my_spinner').css('visibility', 'visible');
+        loadchart(date);
 
-		legend: {
-			hide: true
-		},
-		color: {
-			pattern: [
-				'#ff7430',
-				'#f158d0',
-				'#c581fc',
-				'#30ccff',
-				'#5cd050',
-				'#ffaf30'
-			]
-		}
-	});
+    })
 });
+
+ function loadchart(date) {
+     var route = window.location.origin + '/public/chartdata';
+     var data_column = [];
+
+     $.get(route, {query_date : date}, function (data, status) {
+         console.log(data);
+
+         data.data.forEach((item, index) => {
+             data_column[index] = [item.name, item.moyenne];
+
+         });
+
+         if(data_column.length === 0){
+             data_column[0] = ['Aucune transaction', 0];
+		 }
+
+         $('.my_spinner').css('visibility', 'hidden');
+
+         var chart = c3.generate({
+             bindto: '#campaign',
+             data: {
+                 columns: data_column,
+                 type: 'donut',
+                 tooltip: {
+                     show: true
+                 }
+             },
+             donut: {
+                 label: {
+                     show: false
+                 },
+                 title: data.total,
+                 width: 45
+             },
+
+             legend: {
+                 hide: false
+             },
+             color: {
+                 pattern: [
+                     '#30ccff',
+                     '#5cd050',
+                     '#ffaf30',
+                     '#ff7430',
+                     '#f158d0',
+                     '#c581fc',
+                     '#e8ff1b',
+                     '#f60000',
+                 ]
+             }
+         });
+     });
+}

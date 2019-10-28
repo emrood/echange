@@ -104,7 +104,7 @@
             var id = "{!! (Session::has('change'))? Session::get('change')->id : 0 !!}";
             // console.log(id);
             if(id != 0){
-                window.open('/change/' + id + '/print', '_blank');
+                window.open('/public/change/' + id + '/print', '_blank');
             }
         })();
     </script>

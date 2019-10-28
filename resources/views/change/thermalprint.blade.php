@@ -15,14 +15,11 @@ setlocale(LC_TIME, "fr_FR");
 {{--{{ dd($succursales->get(0)) }}--}}
 
 <div class="main" style="margin-bottom:-45px">
-    <div style="margin-bottom: 15px;">
-        <div style="margin-left: 100px;">
-            <img src="{{ URL::to('plugins/images/logo.png') }}" alt="" class="logo">
+    <div style="margin-bottom: 5px;">
+        <div style="margin-left: 80px;">
+            <img src="{{asset('assets/images/logo_print.png')}}" alt="" style="height: 50px;">
         </div>
-
     </div>
-
-
     <div class="tickets_container">
         <div class="tickets page-break">
             <div class="row">
@@ -33,6 +30,10 @@ setlocale(LC_TIME, "fr_FR");
                 <div class="info_container">
                     <div class="titles">Caissier</div>
                     <div class="data">: {{ $change->user->name }}</div>
+                </div>
+                <div class="info_container">
+                    <div class="titles">Transaction</div>
+                    <div class="data">: {{ '#'.$change->id }}</div>
                 </div>
             </div>
             <br/>

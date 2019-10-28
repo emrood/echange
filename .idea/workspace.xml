@@ -2,19 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f7060fe-a7b5-46c8-a876-31120cd4bb53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/cash_fund/thermalwithdrawal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cash_fund/withdrawal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/echange.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/echange.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CashFundController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CashFundController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChangeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChangeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cash_fund/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cash_fund/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cash_fund/deposit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cash_fund/deposit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/pages/dashboards/dashboard1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/pages/dashboards/dashboard1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/layouts/partials/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/layouts/partials/topbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/cash_fund/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cash_fund/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/cash_fund/thermaldeposit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cash_fund/thermaldeposit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/cash_fund/thermalprint.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cash_fund/thermalprint.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cash_fund/thermalwithdrawal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cash_fund/thermalwithdrawal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/change/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/change/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/change/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/change/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/change/thermalprint.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/change/thermalprint.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,14 +100,55 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1999049972">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.76" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="3" />
+          <entry key="env" value="1" />
+          <entry key="js" value="8" />
+          <entry key="php" value="22" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key=".env file" value="1" />
+          <entry key="Blade" value="17" />
+          <entry key="CSS" value="3" />
+          <entry key="JavaScript" value="8" />
+          <entry key="PHP" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="458" />
+          <entry key="php" value="1528" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Blade" value="473" />
+          <entry key="JavaScript" value="458" />
+          <entry key="PHP" value="1055" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="155" column="132" selection-start-line="155" selection-start-column="132" selection-end-line="155" selection-end-column="132" />
+            <state relative-caret-position="399">
+              <caret line="497" column="36" selection-start-line="497" selection-start-column="36" selection-end-line="497" selection-end-column="36" />
               <folding>
                 <element signature="e#10#33#0" expanded="true" />
                 <element signature="e#10#33#0" expanded="true" />
@@ -98,12 +156,10 @@
                 <element signature="e#120#128#0" expanded="true" />
                 <element signature="e#10#35#0" expanded="true" />
                 <element signature="e#10#35#0" expanded="true" />
-                <element signature="e#12268#12290#0#HTML" expanded="true" />
                 <element signature="e#36#44#0" expanded="true" />
                 <element signature="e#118#126#0" expanded="true" />
                 <element signature="e#10#41#0" expanded="true" />
                 <element signature="e#10#41#0" expanded="true" />
-                <element signature="e#16597#16619#0#HTML" expanded="true" />
                 <element signature="e#39#47#0" expanded="true" />
                 <element signature="e#124#132#0" expanded="true" />
               </folding>
@@ -114,8 +170,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermalwithdrawal.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="102" />
+            <state relative-caret-position="460">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,8 +184,67 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermaldeposit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+            <state relative-caret-position="460">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/change/thermalprint.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="35" column="58" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChangeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-276">
+              <caret line="73" column="93" selection-start-line="73" selection-start-column="93" selection-end-line="73" selection-end-column="93" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/change/list.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="130" selection-start-line="130" selection-end-line="130" />
+              <folding>
+                <element signature="e#116#123#0" expanded="true" />
+                <element signature="e#139#146#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/change/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="106" column="36" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/partials/left-sidebar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="725" column="45" lean-forward="true" selection-start-line="725" selection-start-column="45" selection-end-line="725" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -132,40 +252,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermalprint.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="62" column="91" selection-start-line="62" selection-start-column="91" selection-end-line="62" selection-end-column="91" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CashFundController.php">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="368">
-              <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="80" />
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="10" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/partials/topbar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="511" lean-forward="true" selection-start-line="511" selection-end-line="511" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/withdrawal.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="74" column="47" lean-forward="true" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
+            <state relative-caret-position="299">
+              <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -199,12 +301,23 @@
       <find>row</find>
       <find>$to_show</find>
       <find>$deposit</find>
+      <find>bg-gradient-primary</find>
+      <find>.btn-primary:hover</find>
+      <find>#fc5300</find>
+      <find>campaign</find>
+      <find>Vermo</find>
+      <find>Vermont</find>
+      <find>hom</find>
+      <find>Vermon</find>
     </findStrings>
     <replaceStrings>
       <replace>$euro</replace>
       <replace>$deposit</replace>
       <replace>$to_date</replace>
       <replace>$withdrawal</replace>
+      <replace>#5fb343</replace>
+      <replace>#2779ff</replace>
+      <replace>#41d0ff</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -213,17 +326,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/change.js" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_10_03_223448_add_uid_to_changes_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/errors/401.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/errors/403.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/errors/404.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/errors/419.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/errors/429.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/errors/500.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/errors/503.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_04_160531_add_is_locked_to_cash_funds_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/layouts/partials/topbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/public/js/livedata.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" />
@@ -235,35 +343,40 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_10_05_234656_create_deposit_currencies_table.php" />
         <option value="$PROJECT_DIR$/app/DepositCurrency.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/resources/views/change/list.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/change/print.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/change/show.blade.php" />
         <option value="$PROJECT_DIR$/app/Jobs/PrintChange.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/change/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/change/thermalprint.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/cash_fund/thermalprint.php" />
         <option value="$PROJECT_DIR$/app/Deposit.php" />
         <option value="$PROJECT_DIR$/resources/views/cash_fund/print.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/layouts/partials/left-sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ChangeController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_08_221126_create_withdrawals_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_08_222625_create_withdrawal_currencies_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_09_075427_add_is_canceled_to_deposits_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_09_075647_add_is_canceled_to_withdrawals_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_09_075619_add_is_closed_to_cash_funds_table.php" />
         <option value="$PROJECT_DIR$/resources/views/cash_fund/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/cash_fund/thermalprint.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/cash_fund/withdrawal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/cash_fund/deposit.blade.php" />
         <option value="$PROJECT_DIR$/app/Withdrawal.php" />
         <option value="$PROJECT_DIR$/app/WithdrawalCurrency.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CashFundController.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/layouts/partials/topbar.blade.php" />
+        <option value="$PROJECT_DIR$/public/dist/css/style.min.css" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/public/dist/js/pages/dashboards/dashboard1.js" />
+        <option value="$PROJECT_DIR$/resources/views/backend/layouts/partials/left-sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/cash_fund/thermalprint.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/cash_fund/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/cash_fund/thermalwithdrawal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/cash_fund/thermaldeposit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/cash_fund/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/change/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ChangeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/change/list.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/change/thermalprint.blade.php" />
       </list>
     </option>
   </component>
@@ -385,6 +498,16 @@
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -404,41 +527,48 @@
         <subPane>
           <expand>
             <path>
-              <item name="echange" type="b2602c69:ProjectViewProjectNode" />
-              <item name="echange" type="462c0819:PsiDirectoryNode" />
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="echange" type="b2602c69:ProjectViewProjectNode" />
-              <item name="echange" type="462c0819:PsiDirectoryNode" />
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="echange" type="b2602c69:ProjectViewProjectNode" />
-              <item name="echange" type="462c0819:PsiDirectoryNode" />
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="echange" type="b2602c69:ProjectViewProjectNode" />
-              <item name="echange" type="462c0819:PsiDirectoryNode" />
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="echange" type="b2602c69:ProjectViewProjectNode" />
-              <item name="echange" type="462c0819:PsiDirectoryNode" />
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="echange" type="b2602c69:ProjectViewProjectNode" />
-              <item name="echange" type="462c0819:PsiDirectoryNode" />
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="cash_fund" type="462c0819:PsiDirectoryNode" />
+              <item name="change" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="echange" type="b2602c69:ProjectViewProjectNode" />
-              <item name="echange" type="462c0819:PsiDirectoryNode" />
+              <item name="echange_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="echange_deploy" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -449,7 +579,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../fc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -490,11 +620,14 @@
       <workItem from="1570553774646" duration="318000" />
       <workItem from="1570586224959" duration="2762000" />
       <workItem from="1570620804214" duration="6328000" />
+      <workItem from="1571154632869" duration="89000" />
+      <workItem from="1571785647129" duration="601000" />
+      <workItem from="1572192973196" duration="11713000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120342000" />
+    <option name="totallyTimeSpent" value="132745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -557,154 +690,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1495">
-          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Currency/CurrencyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1706">
-          <caret line="182" column="50" lean-forward="true" selection-start-line="182" selection-start-column="50" selection-end-line="182" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/currency/currency/form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FrontEndController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_10_03_144051_create_cash_funds_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_10_03_145052_create_cash_fund_currencies_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Currency.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Change.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/CashFundCurrency.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DepositController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/rate_history/rate-history/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="233" column="47" selection-start-line="233" selection-start-column="47" selection-end-line="233" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/change/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Jobs/PrintChange.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2139">
-          <caret line="93" column="18" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/change/print.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1311">
-          <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/change/thermalprint.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/CashFund.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/change/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1315">
-          <caret line="104" column="31" lean-forward="true" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/currency/currency/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-414" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/partials/left-sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_10_08_221126_create_withdrawals_table.php">
@@ -735,39 +723,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChangeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="84" column="11" selection-start-line="84" selection-start-column="11" selection-end-line="86" selection-end-column="13" />
-          <folding>
-            <element signature="e#40#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/dist/js/pages/calendar/cal-init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/change/list.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="223" column="28" lean-forward="true" selection-start-line="223" selection-start-column="28" selection-end-line="223" selection-end-column="28" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_10_09_075647_add_is_canceled_to_withdrawals_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
           <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-end-line="32" />
-          <folding>
-            <element signature="e#331#446#1#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -775,13 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
           <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="e#326#438#1#PHP" expanded="true" />
-            <element signature="e#326#438#1#PHP" expanded="true" />
-            <element signature="e#326#438#1#PHP" expanded="true" />
-            <element signature="e#326#438#1#PHP" expanded="true" />
-            <element signature="e#591#690#1#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -789,9 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-end-line="18" />
-          <folding>
-            <element signature="e#590#691#1#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -799,9 +751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="644">
           <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="46" />
-          <folding>
-            <element signature="e#326#440#1#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -812,10 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="78" column="89" selection-start-line="78" selection-start-column="89" selection-end-line="78" selection-end-column="89" />
-          <folding>
-            <element signature="e#85#92#0" expanded="true" />
-            <element signature="e#46#54#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -840,13 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/withdrawal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="74" column="47" lean-forward="true" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/deposit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -858,9 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -868,54 +803,194 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/withdrawal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1702">
+          <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#735#770#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/dist/css/style.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12751">
+          <caret line="28" column="103023" selection-start-line="28" selection-start-column="103023" selection-end-line="28" selection-end-column="103023" />
+          <folding>
+            <element signature="e#218284#218518#2" expanded="true" />
+            <element signature="e#219023#219257#1" expanded="true" />
+            <element signature="e#222540#222816#2" expanded="true" />
+            <element signature="e#223334#223610#1" expanded="true" />
+            <element signature="e#253638#253825#2" expanded="true" />
+            <element signature="e#254352#254488#2" expanded="true" />
+            <element signature="e#254641#254774#2" expanded="true" />
+            <element signature="e#266579#266809#2" expanded="true" />
+            <element signature="e#267627#267863#2" expanded="true" />
+            <element signature="e#293630#293807#2" expanded="true" />
+            <element signature="e#293853#294030#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/libs/chart.js/dist/Chart.bundle.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1894">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/libs/chart.js/dist/Chart.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/libs/chartist/dist/chartist.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/landing.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/extra-libs/c3/c3.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="203" selection-start-column="203" selection-end-column="203" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/extra-libs/c3/d3.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/extra-libs/c3/c3.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret column="5869" selection-start-column="5869" selection-end-column="5869" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="511" lean-forward="true" selection-start-line="511" selection-end-line="511" />
+        <state relative-caret-position="276">
+          <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermaldeposit.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/ui-elements/ui-progressbar.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/livedata.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+        <state relative-caret-position="1495">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermalwithdrawal.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/ui-elements/ui-spinner.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="102" />
+        <state relative-caret-position="920">
+          <caret line="40" column="67" lean-forward="true" selection-start-line="40" selection-start-column="67" selection-end-line="40" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="139" column="124" selection-start-line="139" selection-start-column="124" selection-end-line="139" selection-end-column="124" />
+          <folding>
+            <element signature="e#58#63#0" expanded="true" />
+            <element signature="e#97#104#0" expanded="true" />
+            <element signature="e#245#250#0" expanded="true" />
+            <element signature="e#8343#8391#0#HTML" expanded="true" />
+            <element signature="e#10312#10345#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CashFundController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="80" />
+        <state relative-caret-position="261">
+          <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="97" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermalprint.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="62" column="91" selection-start-line="62" selection-start-column="91" selection-end-line="62" selection-end-column="91" />
+        <state relative-caret-position="441">
+          <caret line="68" column="49" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
+            <element signature="e#634#641#0#PHP" expanded="true" />
+            <element signature="e#634#641#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/dist/js/pages/dashboards/dashboard1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="99" column="50" selection-start-line="99" selection-start-column="50" selection-end-line="99" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/partials/left-sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="725" column="45" lean-forward="true" selection-start-line="725" selection-start-column="45" selection-end-line="725" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/partials/topbar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="155" column="132" selection-start-line="155" selection-start-column="132" selection-end-line="155" selection-end-column="132" />
+        <state relative-caret-position="399">
+          <caret line="497" column="36" selection-start-line="497" selection-start-column="36" selection-end-line="497" selection-end-column="36" />
           <folding>
             <element signature="e#10#33#0" expanded="true" />
             <element signature="e#10#33#0" expanded="true" />
@@ -923,14 +998,85 @@
             <element signature="e#120#128#0" expanded="true" />
             <element signature="e#10#35#0" expanded="true" />
             <element signature="e#10#35#0" expanded="true" />
-            <element signature="e#12268#12290#0#HTML" expanded="true" />
             <element signature="e#36#44#0" expanded="true" />
             <element signature="e#118#126#0" expanded="true" />
             <element signature="e#10#41#0" expanded="true" />
             <element signature="e#10#41#0" expanded="true" />
-            <element signature="e#16597#16619#0#HTML" expanded="true" />
             <element signature="e#39#47#0" expanded="true" />
             <element signature="e#124#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermalwithdrawal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermalprint.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/cash_fund/thermaldeposit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/change/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="106" column="36" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChangeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-276">
+          <caret line="73" column="93" selection-start-line="73" selection-start-column="93" selection-end-line="73" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/change/list.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
+          <folding>
+            <element signature="e#116#123#0" expanded="true" />
+            <element signature="e#139#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/change/thermalprint.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="35" column="58" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

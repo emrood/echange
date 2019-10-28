@@ -11,12 +11,12 @@
             <div class="navbar-brand">
                 <a href="{{asset('/')}}" class="logo">
                     <!-- Logo icon -->
-                    <b class="logo-icon">
+                    <b class="logo-icon" style="margin-left: 50%">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        {{--<img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo"/>--}}
+                        <img src="{{asset('assets/images/logo_one.png')}}" alt="homepage" class="dark-logo" style="width: 124px; height: 52px;"/>
                         {{--<!-- Light Logo icon -->--}}
-                        {{--<img src="{{asset('assets/images/logo-light-icon.png')}}" alt="homepage" class="light-logo"/>--}}
+                        <img src="{{asset('assets/images/logo_one.png')}}" alt="homepage" class="light-logo" style="width: 124px; height: 52px;"/>
 
                     </b>
                     <!--End Logo icon -->
@@ -27,7 +27,7 @@
                         {{--<!-- Light Logo text -->--}}
                         {{--<img src="{{asset('assets/images/logo-light-text.png')}}" class="light-logo"--}}
                         {{--alt="homepage"/>--}}
-                        <span style="display: inline-block; color: #ffffff; margin-top: 3px; font-weight: bold">E-Change</span>
+                        {{--<span style="display: inline-block; color: #ffffff; margin-top: 3px; font-weight: bold">E-Change</span>--}}
                             </span>
                 </a>
                 <a class="sidebartoggler d-none d-lg-block" href="javascript:void(0)" data-sidebartype="mini-sidebar">

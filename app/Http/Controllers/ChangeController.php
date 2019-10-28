@@ -47,9 +47,10 @@ class ChangeController extends Controller
         abort(401);
     }
 
-    public function list(Request $request){
+    public function list(Request $request)
+    {
 
-        if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+        if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
 
             ini_set('memory_limit', '3096M');
 
@@ -62,32 +63,30 @@ class ChangeController extends Controller
             $user_id = '*';
             $currency_id = '*';
 
-            if(!empty($request->all())){
+            if (!empty($request->all())) {
 //                dd($request->all());
                 $user_id = $request->user_id;
                 $currency_id = $request->currency_id;
                 $from_date = $request->start;
-                $to_date= $request->end;
+                $to_date = $request->end;
 
                 $query_from_date = Carbon::createFromFormat('m/d/Y', $from_date)->toDateString();
                 $query_to_date = Carbon::createFromFormat('m/d/Y', $to_date)->toDateString();
-
-
+//                $changes = Change::whereBetween('created_at', [$query_from_date, $query_to_date]);
             }
 
-//            $changes = Change::whereBetween('created_at', [$query_from_date, $query_to_date]);
 
+            $changes = Change::whereDate('created_at', '>=', $query_from_date)->whereDate('created_at', '<=', $query_to_date);
 
-            $changes = Change::whereDate('created_at', '>=' ,$query_from_date)->whereDate('created_at', '<=' ,$query_to_date);
 
 //            dd($changes);
 
-            if($user_id != '*'){
-                $changes = $changes->where('user_id', (int) $user_id);
+            if ($user_id != '*') {
+                $changes = $changes->where('user_id', (int)$user_id);
             }
 
-            if($currency_id != '*'){
-                $changes = $changes->where('from_currency_id', (int) $currency_id);
+            if ($currency_id != '*') {
+                $changes = $changes->where('from_currency_id', (int)$currency_id);
             }
 
             $changes = $changes->get();
@@ -126,9 +125,9 @@ class ChangeController extends Controller
         if (Auth::check()) {
             ini_set('memory_limit', '3096M');
             $cashFund = Auth::user()->funds()->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->first();
-            if($cashFund != null){
+            if ($cashFund != null) {
                 $currency = Currency::find($request->change_type);
-                if($currency){
+                if ($currency) {
                     $change = new Change();
                     $change->from_currency_id = $request->change_type;
                     $change->to_currency_id = 1;
@@ -138,20 +137,20 @@ class ChangeController extends Controller
                     $change->user_id = Auth::user()->id;
                     $change->uid = md5(uniqid(Auth::user()->id, true));
 
-                    if($change->save()){
+                    if ($change->save()) {
 
                         $cashFund->is_locked = true;
                         $cashFund->save();
                         //Mise a jour de la caisse
                         $withdrawal = $cashFund->funds()->where('currency_id', 1)->first();
-                        if($withdrawal){
+                        if ($withdrawal) {
                             $withdrawal->amount -= $change->given_amount;
                             $withdrawal->save();
                         }
 
 
                         $deposit = $cashFund->funds()->where('currency_id', $request->change_type)->first();
-                        if($deposit){
+                        if ($deposit) {
                             $deposit->amount += $change->amount_received;
                             $deposit->save();
                         }
@@ -164,11 +163,11 @@ class ChangeController extends Controller
 //                            $pdf->save('operation de change - '.$change->created_at.'.pdf');
 //                        }
 //                        Session::flash('message','Transaction enregistrée avec succès!');
-                        return redirect()->back()->with('message','Transaction enregistrée avec succès !')->with('change', $change);
-                    }else{
+                        return redirect()->back()->with('message', 'Transaction enregistrée avec succès !')->with('change', $change);
+                    } else {
                         abort(500);
                     }
-                }else{
+                } else {
                     abort(401);
                 }
             }
@@ -223,24 +222,25 @@ class ChangeController extends Controller
         //
     }
 
-    public function cancel($id){
-        if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())){
+    public function cancel($id)
+    {
+        if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isSupervisor())) {
             $change = Change::find($id);
-            if($change){
+            if ($change) {
                 $change->canceled = true;
-                if($change->save()){
+                if ($change->save()) {
                     $cashFund = CashFund::where('cashier_id', $change->user_id)->where('is_locked', true)->where('is_canceled', false)->whereDate('date', Carbon::today()->toDateString())->first();
 
 //                    dd($cashFund);
-                    if($cashFund){
+                    if ($cashFund) {
                         $deposit = $cashFund->funds()->where('currency_id', $change->to_currency_id)->first();
-                        if($deposit){
+                        if ($deposit) {
                             $deposit->amount += $change->given_amount;
                             $deposit->save();
                         }
 
                         $redrawal = $cashFund->funds()->where('currency_id', $change->from_currency_id)->first();
-                        if($redrawal){
+                        if ($redrawal) {
                             $redrawal->amount -= $change->amount_received;
                             $redrawal->save();
 //                            dd($cashFund->amount_received);
@@ -249,9 +249,9 @@ class ChangeController extends Controller
                     }
                 }
 
-                return redirect()->back()->with('message','Transaction annulée avec succès !');
-            }else{
-                return redirect()->back()->with('message','Transaction non trouvée !');
+                return redirect()->back()->with('message', 'Transaction annulée avec succès !');
+            } else {
+                return redirect()->back()->with('message', 'Transaction non trouvée !');
             }
         }
 
@@ -259,13 +259,14 @@ class ChangeController extends Controller
     }
 
 
-    public function print($id){
+    public function print($id)
+    {
         $change = Change::find($id);
 
-        if($change){
+        if ($change) {
             $pdf = PDF::loadView('change.thermalprint', compact('change'));
 //            return $pdf->download('operation de change - '.$change->created_at.'.pdf');
-            return $pdf->stream('operation de change - '.$change->created_at.'.pdf');
+            return $pdf->stream('operation de change - ' . $change->created_at . '.pdf');
 
         }
         abort(404);

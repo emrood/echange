@@ -19,7 +19,7 @@
 Route::post('login', 'Auth\LoginController@login');
 Route::get('login' , 'Auth\LoginController@login');
 Route::get('/'     , 'Auth\LoginController@login');
-
+Route::get('chartdata'     , 'HomeController@getChartData');
 
 Route::resource('home', 'HomeController');
 

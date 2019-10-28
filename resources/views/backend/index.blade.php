@@ -19,6 +19,8 @@
         if(!is_null($last_two_histories)){
             if(count($last_two_histories) > 1){
                 $evolution[$currency->id] = $last_two_histories->get(0)->sale_rate - $last_two_histories->get(1)->sale_rate;
+            }else{
+                $evolution[$currency->id] = 0;
             }
         }
     }
@@ -34,64 +36,31 @@
                 <div class="card bg-gradient-primary sales-details">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="d-flex p-3">
-                                    <div>
-                                        {{--<i class="text-white op-7" data-feather="shield"></i>--}}
-                                        <span class="text-white op-7 d-block my-3">USD</span>
-                                        <h3 class="text-white mb-0">94,5</h3>
-                                    </div>
-                                    <div class="ml-auto align-self-end mb-1">
-                                                <span class="text-white"><i class="fas fa-caret-up text-white mr-1"></i>
-                                                    1</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="d-flex p-3">
-                                    <div>
-                                        {{--<i class="text-white op-7" data-feather="user-plus"></i>--}}
-                                        <span class="text-white op-7 d-block my-3">Euro</span>
-                                        <h3 class="text-white mb-0">98</h3>
-                                    </div>
-                                    <div class="ml-auto align-self-end mb-1">
-                                                <span class="text-white"><i
-                                                            class="fas fa-caret-down text-white mr-1"></i>
-                                                    2</span>
+                            @foreach($currencies->where('is_reference', false) as $currency)
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="d-flex p-3">
+                                        <div>
+                                            {{--<i class="text-white op-7" data-feather="shield"></i>--}}
+                                            <span class="text-white op-7 d-block my-3">{{ $currency->abbreviation }}</span>
+                                            <h3 class="text-white mb-0">{{ number_format($currency->sale_rate, 2, ',', '.') }}</h3>
+                                        </div>
+                                        <div class="ml-auto align-self-end mb-1">
+                                            @if($evolution[$currency->id] > 0)
+                                                <span class="text-white"><i class="fas fa-caret-up text-white mr-1"></i>{{ $evolution[$currency->id] }}</span>
+                                            @elseif($evolution[$currency->id] < 0)
+                                                <span class="text-white"><i class="fas fa-caret-down text-white mr-1"></i>{{ abs($evolution[$currency->id]) }}</span>
+                                            @else
+                                                <span class="text-white"><i class="fas fa-minus text-white mr-1"></i></span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="d-flex p-3">
-                                    <div>
-                                        {{--<i class="text-white op-7" data-feather="cloud"></i>--}}
-                                        <span class="text-white op-7 d-block my-3">PESO</span>
-                                        <h3 class="text-white mb-0">1,85</h3>
-                                    </div>
-                                    <div class="ml-auto align-self-end mb-1">
-                                                <span class="text-white"><i class="fas fa-caret-up text-white mr-1"></i>
-                                                    0.50</span>
-                                    </div>
-                                </div>
-                            </div>
-                            {{--<div class="col-lg-3 col-md-6">--}}
-                                {{--<div class="d-flex p-3">--}}
-                                    {{--<div>--}}
-                                        {{--<i class="text-white op-7" data-feather="briefcase"></i>--}}
-                                        {{--<span class="text-white op-7 d-block my-3">New Customers</span>--}}
-                                        {{--<h3 class="text-white mb-0">180</h3>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="ml-auto align-self-end mb-1">--}}
-                                                {{--<span class="text-white"><i--}}
-                                                            {{--class="fas fa-caret-down text-white mr-1"></i>--}}
-                                                    {{--2.41</span>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         <!-- ============================================================== -->
         <!-- Sales -->
         <!-- ============================================================== -->
@@ -106,8 +75,8 @@
                             <div>
                                 <h4 class="card-title">Evolution du taux de change</h4>
                                 {{--<h6 class="card-subtitle mb-0">Risus commodo viverra maecenas accumsan lacus--}}
-                                    {{--vel--}}
-                                    {{--facilisis. </h6>--}}
+                                {{--vel--}}
+                                {{--facilisis. </h6>--}}
                             </div>
                             <div class="ml-auto">
                                 <div class="dropdown title-dropdown">
@@ -116,8 +85,8 @@
                                         <i data-feather="more-horizontal"></i>
                                     </button>
                                     {{--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd1">--}}
-                                        {{--<a class="dropdown-item" href="#">Edit</a>--}}
-                                        {{--<a class="dropdown-item" href="#">Delete</a>--}}
+                                    {{--<a class="dropdown-item" href="#">Edit</a>--}}
+                                    {{--<a class="dropdown-item" href="#">Delete</a>--}}
                                     {{--</div>--}}
                                 </div>
                             </div>
@@ -137,7 +106,7 @@
                                         class="fas fa-circle font-10 mr-2 text-warning"></i>PESO
                             </li>
                             {{--<li class="list-inline-item text-dark"><i--}}
-                                        {{--class="fas fa-circle font-10 mr-2 text-danger"></i>Vermont--}}
+                            {{--class="fas fa-circle font-10 mr-2 text-danger"></i>Vermont--}}
                             {{--</li>--}}
                         </ul>
                     </div>
@@ -151,53 +120,56 @@
                             <div>
                                 <h4 class="card-title">Chart de transaction</h4>
                                 {{--<h6 class="card-subtitle mb-0">Risus commodo viverra maecenas accumsan lacus--}}
-                                    {{--vel--}}
-                                    {{--facilisis. </h6>--}}
+                                {{--vel--}}
+                                {{--facilisis. </h6>--}}
                             </div>
                             <div class="ml-auto">
                                 <div class="dropdown title-dropdown">
                                     {{--<button class="btn btn-link text-muted dropdown-toggle" type="button" id="dd2"--}}
-                                            {{--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                        {{--<i data-feather="more-horizontal"></i>--}}
+                                    {{--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                    {{--<i data-feather="more-horizontal"></i>--}}
                                     {{--</button>--}}
                                     {{--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd2">--}}
-                                        {{--<a class="dropdown-item" href="#">Edit</a>--}}
-                                        {{--<a class="dropdown-item" href="#">Delete</a>--}}
+                                    {{--<a class="dropdown-item" href="#">Edit</a>--}}
+                                    {{--<a class="dropdown-item" href="#">Delete</a>--}}
                                     {{--</div>--}}
                                 </div>
                             </div>
                         </div>
                         <div class="custom-input w-50 mt-3">
-                            <input type="text" class="form-control datepicker" placeholder="Select date">
+                            <input type="text" class="form-control datepicker donut_date" placeholder="Selectionner une date">
                             <i class="form-control-icon" data-feather="calendar"></i>
                         </div>
                         <div class="row align-items-center">
                             <!-- column -->
-                            <div class="col-md-7">
+                            <div class="col-md-12">
+                                <div class="spinner-border text-info my_spinner" role="status" style="position: relative; top: 200px; left: 50%;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
                                 <div id="campaign" class="mt-4" style="height:363px; width:100%;"></div>
                             </div>
                             <!-- column -->
-                            <div class="col-md-5 ml-auto">
-                                <ul class="list-style-none">
-                                    <li><i class="fas fa-circle text-danger font-12 mr-2"></i> <span class="text-dark">USD</span>
-                                        <span class="text-muted ml-1">*</span></li>
-                                    <li class="mt-4"><i class="fas fa-circle text-primary font-12 mr-2"></i>
-                                        <span class="text-dark">EURO</span> <span
-                                                class="text-muted ml-1">*</span></li>
-                                    <li class="mt-4"><i class="fas fa-circle text-purple font-12 mr-2"></i>
-                                        <span class="text-dark">PESO</span> <span
-                                                class="text-muted ml-1">*</span></li>
+                            {{--<div class="col-md-5 ml-auto">--}}
+                                {{--<ul class="list-style-none">--}}
+                                    {{--<li><i class="fas fa-circle text-danger font-12 mr-2"></i> <span class="text-dark">USD</span>--}}
+                                        {{--<span class="text-muted ml-1">*</span></li>--}}
+                                    {{--<li class="mt-4"><i class="fas fa-circle text-primary font-12 mr-2"></i>--}}
+                                        {{--<span class="text-dark">EURO</span> <span--}}
+                                                {{--class="text-muted ml-1">*</span></li>--}}
+                                    {{--<li class="mt-4"><i class="fas fa-circle text-purple font-12 mr-2"></i>--}}
+                                        {{--<span class="text-dark">PESO</span> <span--}}
+                                                {{--class="text-muted ml-1">*</span></li>--}}
                                     {{--<li class="mt-4"><i class="fas fa-circle text-info font-12 mr-2"></i> <span--}}
-                                                {{--class="text-dark">Washington</span>--}}
-                                        {{--<span class="text-muted ml-1">2,27,631</span></li>--}}
+                                    {{--class="text-dark">Washington</span>--}}
+                                    {{--<span class="text-muted ml-1">2,27,631</span></li>--}}
                                     {{--<li class="mt-4"><i class="fas fa-circle text-success font-12 mr-2"></i>--}}
-                                        {{--<span class="text-dark">Illinois</span> <span--}}
-                                                {{--class="text-muted ml-1">5,74,351</span></li>--}}
+                                    {{--<span class="text-dark">Illinois</span> <span--}}
+                                    {{--class="text-muted ml-1">5,74,351</span></li>--}}
                                     {{--<li class="mt-4"><i class="fas fa-circle text-warning font-12 mr-2"></i>--}}
-                                        {{--<span class="text-dark">Nevada</span> <span--}}
-                                                {{--class="text-muted ml-1">6,98,176</span></li>--}}
-                                </ul>
-                            </div>
+                                    {{--<span class="text-dark">Nevada</span> <span--}}
+                                    {{--class="text-muted ml-1">6,98,176</span></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
                             <!-- column -->
                         </div>
                     </div>

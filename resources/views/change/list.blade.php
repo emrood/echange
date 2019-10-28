@@ -103,9 +103,10 @@ $bigTotal = 0;
                                     <!--/span-->
 
                                     <div class="col-md-1">
-                                        <label class="control-label">  </label>
+                                        <label class="control-label"> </label>
                                         <div class="input-group my-3">
-                                            <input type="submit" class="btn btn-info" value="Rechercher" style="margin-top: 8px;"/>
+                                            <input type="submit" class="btn btn-info" value="Rechercher"
+                                                   style="margin-top: 8px;"/>
                                         </div>
                                     </div>
                                 </div>
@@ -127,52 +128,56 @@ $bigTotal = 0;
                         <h4 class="card-title">Transactions de change :</h4>
                         <h6 class="card-subtitle">Le classement est fait selon les options selectionnées dans les
                             filtres</h6>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-one">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Utilisateur</th>
-                                <th scope="col">Montant recu</th>
-                                <th scope="col">Montant rendu</th>
-                                <th scope="col">Date et heure</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($changes as $change)
+
+                        <div class="table-responsive">
+                            <table class="table table-one">
+                                <thead class="thead-light">
                                 <tr>
-                                    <th scope="row">{{ $change->id }}</th>
-                                    <td>{{ $change->user->name }}</td>
-                                    <td class="text-danger">{{ $change->amount_received.' '.$change->fromCurrency->abbreviation }}</td>
-                                    <td>{{ $change->given_amount.' '.$change->toCurrency->abbreviation }}</td>
-                                    <td>{{ $change->created_at }}</td>
-                                    <td>
-                                        @if(!$change->canceled)
-                                            <span class="fa fa-check-circle text-success text-center"></span>
-                                        @else
-                                            <span class="fa fa-times-circle text-danger text-center"></span>
-                                        @endif
-
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('change.show', $change) }}" class="btn btn-sm btn-primary mb-1"><i class="icon-eye"></i></a>
-                                        <a href="{{ url('/change/'.$change->id.'/print') }}" class="btn btn-sm btn-info mb-1"><i class="icon-printer"></i></a>
-
-                                        @if(!$change->canceled && (Auth::user()->isAdmin() || Auth::user()->isSupervisor()))
-                                            <a href="{{ url('change/'.$change->id.'/cancel') }}" alt="annulée"
-                                               class="btn btn-sm btn-danger delete text-white mb-1"
-                                               style="cursor:pointer;">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        @endif
-                                    </td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Utilisateur</th>
+                                    <th scope="col">Montant recu</th>
+                                    <th scope="col">Montant rendu</th>
+                                    <th scope="col">Date et heure</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($changes as $change)
+                                    <tr>
+                                        <th scope="row">{{ $change->id }}</th>
+                                        <td>{{ $change->user->name }}</td>
+                                        <td class="text-danger">{{ $change->amount_received.' '.$change->fromCurrency->abbreviation }}</td>
+                                        <td>{{ $change->given_amount.' '.$change->toCurrency->abbreviation }}</td>
+                                        <td>{{ $change->created_at }}</td>
+                                        <td>
+                                            @if(!$change->canceled)
+                                                <span class="fa fa-check-circle text-success text-center"></span>
+                                            @else
+                                                <span class="fa fa-times-circle text-danger text-center"></span>
+                                            @endif
+
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('change.show', $change) }}"
+                                               class="btn btn-sm btn-primary mb-1"><i class="icon-eye"></i></a>
+                                            <a href="{{ url('/change/'.$change->id.'/print') }}"
+                                               class="btn btn-sm btn-info mb-1"><i class="icon-printer"></i></a>
+
+                                            @if(!$change->canceled && (Auth::user()->isAdmin() || Auth::user()->isSupervisor()))
+                                                <a href="{{ url('change/'.$change->id.'/cancel') }}" alt="annulée"
+                                                   class="btn btn-sm btn-danger delete text-white mb-1"
+                                                   style="cursor:pointer;">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -188,7 +193,9 @@ $bigTotal = 0;
                             <tr>
                                 <th scope="col text-danger">Total</th>
                                 @foreach($currencies as $currency)
-                                    <th scope="col">{{ $total[$currency->id].' '.$currency->abbreviation.' ' }} @if($currency->is_reference) <span class="fa fa-arrow-down" style="color: red;"></span> @else <span class="fa fa-arrow-up" style="color: green;"></span>  @endif</th>
+                                    <th scope="col">{{ $total[$currency->id].' '.$currency->abbreviation.' ' }} @if($currency->is_reference)
+                                            <span class="fa fa-arrow-down" style="color: red;"></span> @else <span
+                                                    class="fa fa-arrow-up" style="color: green;"></span>  @endif</th>
                                 @endforeach
                             </tr>
                             </thead>

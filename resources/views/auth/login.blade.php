@@ -12,8 +12,8 @@
         <div class="auth-box">
             <div id="loginform">
                 <div class="logo">
-                    {{--<span class="db"><img src="{{asset('assets/images/logo-icon.png')}}" alt="logo" /></span>--}}
-                    <h5 class="font-medium m-b-20">E-Change</h5>
+                    <span class="db"><img src="{{asset('assets/images/logo_one.png')}}" alt="logo" style="height: 80px; width: 200px;" /></span>
+                    {{--<h5 class="font-medium m-b-20">E-Change</h5>--}}
                 </div>
                 <!-- Form -->
                 <div class="row">

@@ -14,11 +14,10 @@ setlocale(LC_TIME, "fr_FR");
 ?>
 
 <div class="main" style="margin-bottom:-45px">
-    <div style="margin-bottom: 15px;">
-        <div style="margin-left: 100px;">
-            <img src="{{ URL::to('plugins/images/logo.png') }}" alt="" class="logo">
+    <div style="margin-bottom: -15px;">
+        <div style="margin-left: 70px;">
+            <img src="{{asset('assets/images/logo_print.png')}}" alt="" style="height: 50px;">
         </div>
-
     </div>
     <div class="tickets_container">
         <h4 style="margin-left: 80px;">Fond de caisse</h4>
