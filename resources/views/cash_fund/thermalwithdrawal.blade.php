@@ -35,6 +35,10 @@ setlocale(LC_TIME, "fr_FR");
                     <div class="titles">Caissier</div>
                     <div class="data">: {{ $withdrawal->cashier->name }}</div>
                 </div>
+                <div class="info_container">
+                    <div class="titles">Transaction</div>
+                    <div class="data">: {{ '#'.$withdrawal->id }}</div>
+                </div>
             </div>
             <br/>
             <table class="e-table">
