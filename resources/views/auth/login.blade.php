@@ -100,5 +100,12 @@
     <script>
         $('[data-toggle="tooltip"]').tooltip();
         $(".preloader").fadeOut();
+        (function () {
+            var id = "{!! (Session::has('cashFund'))? Session::get('cashFund')->id : 0 !!}";
+
+            if (id != 0) {
+                window.open('/public/cash-fund/' + id + '/print', '_blank');
+            }
+        })();
     </script>
 @endpush

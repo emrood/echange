@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\CashFund;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -58,12 +60,22 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $user = auth()->user();
+
         activity($user->name)
             ->performedOn($user)
             ->causedBy($user)
             ->log('Déconnection');
         $this->guard()->logout();
+
         $request->session()->invalidate();
-        return redirect('login');
+
+        $cashFund = CashFund::where('cashier_id', $user->id)->whereDate('date', Carbon::today()->toDateString())->where('is_canceled', false)->where('is_locked', true)->where('is_closed', false)->first();
+
+        if($cashFund){
+            $cashFund->is_closed = true;
+            $cashFund->save();
+        }
+
+        return redirect('login')->with('cashFund', $cashFund);
     }
 }
